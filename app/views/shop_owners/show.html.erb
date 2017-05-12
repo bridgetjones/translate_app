@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @shop_owner.name %>
+</p>
+
+<p>
+  <strong>Shop name:</strong>
+  <%= @shop_owner.shop_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @shop_owner.address %>
+</p>
+
+<p>
+  <strong>User name:</strong>
+  <%= @shop_owner.user_name %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @shop_owner.password %>
+</p>
+
+<%= link_to 'Edit', edit_shop_owner_path(@shop_owner) %> |
+<%= link_to 'Back', shop_owners_path %>
