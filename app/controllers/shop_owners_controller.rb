@@ -12,7 +12,6 @@ class ShopOwnersController < ApplicationController
   # GET /shop_owners/1
   # GET /shop_owners/1.json
   def show
-    
   end
 
   # GET /shop_owners/new
@@ -22,7 +21,6 @@ class ShopOwnersController < ApplicationController
 
   # GET /shop_owners/1/edit
   def edit
-    ENV['RERE']
   end
 
   def original_text
