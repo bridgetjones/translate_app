@@ -1,5 +1,36 @@
-<h1>New Shop Owner</h1>
+<!-- <%= render 'form', shop_owner: @shop_owner %>
+<%= link_to 'Back', shop_owners_path %> -->
+<h1> Registration New Shop Owner</h1>
 
-<%= render 'form', shop_owner: @shop_owner %>
+<%= form_for @shop_owner do |f| %>
 
-<%= link_to 'Back', shop_owners_path %>
+<p>
+  <%=f.label :name %>
+  <%=f.text_field :name %>
+</p>
+
+<p>
+  <%=f.label :shop_name %>
+  <%=f.password_field :shop_name %>
+</p>
+
+<p>
+  <%=f.label :address %>
+  <%=f.text_field :address %>
+</p>
+
+<p>
+  <%=f.label :password %>
+  <%=f.password_field :password %>
+</p>
+
+<p>
+  <%=f.label :password_confirmation %>
+  <%=f.password_field :password_confirmation %>
+</p>
+<p>
+
+  <%=f.submit %>
+</p>
+
+<% end %>
