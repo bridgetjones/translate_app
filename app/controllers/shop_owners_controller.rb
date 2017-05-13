@@ -28,7 +28,7 @@ class ShopOwnersController < ApplicationController
 
     return render action: 'new'unless @shop_owner.save
 
-    redirect_to root_path, notice 'Created shop owner'
+    redirect_to root_path, notice: 'Created shop owner'
   end
 
 
