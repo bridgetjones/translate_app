@@ -11,6 +11,6 @@ class SessionsController < ApplicationController
 
     #logged in, hooray
     session[:shop_owner_id] = @shop_owner.id
-    redirect_to notes_path
+    redirect_to promotions_path
   end
 end

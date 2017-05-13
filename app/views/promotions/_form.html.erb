@@ -12,12 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :shop_owner_id %>
-    <%= f.text_field :shop_owner_id %>
+    <%= f.hidden_field :shop_owner_id, value: current_shop_owner.id %>
   </div>
 
   <div class="field">
-    <%= f.label :english_promo %>
+    <%= f.label :Title %>
     <%= f.text_field :english_promo %>
   </div>
 
