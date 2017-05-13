@@ -17,7 +17,7 @@ class ShopOwnersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create shop_owner" do
     assert_difference('ShopOwner.count') do
-      post shop_owners_url, params: { shop_owner: { address: @shop_owner.address, name: @shop_owner.name, password: @shop_owner.password, shop_name: @shop_owner.shop_name, user_name: @shop_owner.user_name } }
+      post shop_owners_url, params: { shop_owner: { address: @shop_owner.address, name: @shop_owner.name, password: @shop_owner.password, shop_name: @shop_owner.shop_name, email: @shop_owner.email } }
     end
 
     assert_redirected_to shop_owner_url(ShopOwner.last)
@@ -34,7 +34,7 @@ class ShopOwnersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update shop_owner" do
-    patch shop_owner_url(@shop_owner), params: { shop_owner: { address: @shop_owner.address, name: @shop_owner.name, password: @shop_owner.password, shop_name: @shop_owner.shop_name, user_name: @shop_owner.user_name } }
+    patch shop_owner_url(@shop_owner), params: { shop_owner: { address: @shop_owner.address, name: @shop_owner.name, password: @shop_owner.password, shop_name: @shop_owner.shop_name, email: @shop_owner.email } }
     assert_redirected_to shop_owner_url(@shop_owner)
   end
 

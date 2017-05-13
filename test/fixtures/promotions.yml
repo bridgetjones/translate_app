@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shop_owner: one
+  english_promo: MyString
+  body: MyText
+
+two:
+  shop_owner: two
+  english_promo: MyString
+  body: MyText
