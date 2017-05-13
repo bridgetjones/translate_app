@@ -1,10 +1,11 @@
 class PromotionsController < ApplicationController
   before_action :set_promotion, only: [:show, :edit, :update, :destroy]
+  before_action :require_logged_in
 
   # GET /promotions
   # GET /promotions.json
   def index
-    @promotions = Promotion.all
+    @promotions = current_shop_owner.promotion.all
   end
 
   # GET /promotions/1
@@ -14,8 +15,10 @@ class PromotionsController < ApplicationController
 
   # GET /promotions/new
   def new
-    @promotion = Promotion.new
+    @promotion = current_shop_owner.promotion.new
   end
+
+# only get the notes that belong to current shop owner logged in this sesion
 
   # GET /promotions/1/edit
   def edit
@@ -24,8 +27,8 @@ class PromotionsController < ApplicationController
   # POST /promotions
   # POST /promotions.json
   def create
-    @promotion = Promotion.new(promotion_params)
-
+    @promotion = current_shop_owner.promotion.new(promotion_params)
+# make notes that belong to the current shop owner
     respond_to do |format|
       if @promotion.save
         format.html { redirect_to @promotion, notice: 'Promotion was successfully created.' }
@@ -64,11 +67,14 @@ class PromotionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_promotion
-      @promotion = Promotion.find(params[:id])
+      @promotion = current_shop_owner.promotion.find(params[:id])
     end
-
+# only find notes of current shop owner logged in
     # Never trust parameters from the scary internet, only allow the white list through.
     def promotion_params
-      params.require(:promotion).permit(:shop_owner_id, :english_promo, :body)
+      params.require(:promotion).permit(:english_promo, :body)
     end
 end
+# dont permit shop owner id as parameter
+
+# params.require(:promotion).permit(:shop_owner_id, :english_promo, :body) original
