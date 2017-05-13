@@ -1,6 +1,8 @@
 class ShopOwnersController < ApplicationController
   before_action :set_shop_owner, only: [:show, :edit, :update, :destroy]
 
+  expose(:original_text) {params[:original_text]}
+
   # GET /shop_owners
   # GET /shop_owners.json
   def index
@@ -10,6 +12,7 @@ class ShopOwnersController < ApplicationController
   # GET /shop_owners/1
   # GET /shop_owners/1.json
   def show
+    
   end
 
   # GET /shop_owners/new
@@ -19,10 +22,25 @@ class ShopOwnersController < ApplicationController
 
   # GET /shop_owners/1/edit
   def edit
+    ENV['RERE']
   end
 
+  def original_text
+    original_text = "hello world"
+    url = "https://translation.googleapis.com/language/translate/v2?key=#{ENV['API_KEY']}&target=es&q=#{original_text}"
+    res = HTTParty.post url
+    p res.parsed_response['data']['translations'][0]['translatedText']
+    @original_text = ShopOwner.create(original_text: original_text)
+    byebug
+  end
   # POST /shop_owners
   # POST /shop_owners.json
+
+  def translated_text
+    @translated_text = ShopOwner.find_by(original_text: original_text)
+
+  end
+
   def create
     @shop_owner = ShopOwner.new(shop_owner_params)
 
@@ -62,13 +80,13 @@ class ShopOwnersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_shop_owner
-      @shop_owner = ShopOwner.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_shop_owner
+    @shop_owner = ShopOwner.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def shop_owner_params
-      params.require(:shop_owner).permit(:name, :shop_name, :address, :user_name, :password)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def shop_owner_params
+    params.require(:shop_owner).permit(:name, :shop_name, :address, :user_name, :password)
+  end
 end
