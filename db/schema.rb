@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513201312) do
+ActiveRecord::Schema.define(version: 20170514201643) do
+
+  create_table "customer_promotions", id: false, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index [nil], name: "index_customer_promotions_on_customer_id"
+    t.index [nil], name: "index_customer_promotions_on_promotion_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "language"
+    t.string   "phone"
+    t.integer  "shop_owner_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["shop_owner_id"], name: "index_customers_on_shop_owner_id"
+  end
 
   create_table "promotions", force: :cascade do |t|
     t.integer  "shop_owner_id"
@@ -18,6 +35,7 @@ ActiveRecord::Schema.define(version: 20170513201312) do
     t.text     "body"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.datetime "send_time"
     t.index ["shop_owner_id"], name: "index_promotions_on_shop_owner_id"
   end
 

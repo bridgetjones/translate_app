@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  resources :promotions
+
   get 'sessions/new'
   root 'sessions#new'
 
-  resources :shop_owners
+  resources :shop_owners do
+    resources :promotions
+    resources :customers
+  end
   resources :sessions
   root 'sessions#new'
   # I changed the root path to sessions -BJ
