@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+
   helper_method :current_shop_owner
 
   def current_shop_owner
@@ -8,10 +9,20 @@ class ApplicationController < ActionController::Base
   end
 
   def require_logged_in
-  return true if current_shop_owner
+    return true if current_shop_owner
 
-  return redirect_to root_path
+    return redirect_to root_path
   end
+
+  #
+  # require 'googleauth'
+  # scopes =  ['https://www.googleapis.com/auth/cloud-platform', 'https://www.googleapis.com/auth/devstorage.read_only']
+  # authorization = Google::Auth.get_application_default(scopes)
+  #
+  # require "google/apis/storage_v1"
+  # storage = Google::Apis::StorageV1::StorageService.new
+  # storage.authorization = authorization
+
 end
 
 #

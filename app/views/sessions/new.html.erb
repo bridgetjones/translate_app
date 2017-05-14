@@ -1,5 +1,11 @@
 <!-- <h1>Sessions#new</h1>
 <p>Find me in app/views/sessions/new.html.erb</p> -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TranslateApp</title>
+    <%= csrf_meta_tags %>
+
 
 <h1>Log in</h1>
 <%=form_tag sessions_path do %>
@@ -14,3 +20,28 @@
 <%=submit_tag 'Log in' %>
 </p>
 <% end %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+    <div class="login-page">
+  <div class="form">
+    <form class="register-form">
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+    <form class="login-form">
+      <input type="text" placeholder="username"/>
+      <input type="password" placeholder="password"/>
+      <button>login</button>
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+  </div>
+</div>
+<%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
+
+</html>

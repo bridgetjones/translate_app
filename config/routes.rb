@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   get 'sessions/new'
   root 'sessions#new'
 
-  resource :sessions
   resource :shop_owners
-  # root 'home#application'
-  # changed to resource not resources so now need to do new forms
-# get '/:userinput', to: 'home#index', as: 'userinput'
-# get '/search'  => 'usersearch#index' , as: 'search'
-# post '/text' => 'usersearch#text' , as: 'text'
+  resource :sessions
+  root 'sessions#new'
+  # I changed the root path to sessions -BJ
+  get '/text' => 'shop_owners#original_text' , as: 'text'
+  get '/translated_text' => 'shop_owners#translated_text'
+  get '/shop_owner' => 'shop_owners#new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
