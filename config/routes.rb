@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   get 'sessions/new'
   root 'sessions#new'
 
-  resource :shop_owners
-  resource :sessions
+  resources :shop_owners
+  resources :sessions
   root 'sessions#new'
   # I changed the root path to sessions -BJ
   get '/text' => 'shop_owners#original_text' , as: 'text'

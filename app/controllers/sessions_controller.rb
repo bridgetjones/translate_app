@@ -3,10 +3,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @shop_owner = ShopOwner.
-    find_by(email: params[:email]).
-    try(:authenticate, params[:password])
-
+    @shop_owner = ShopOwner.find_by(email: params[:email]).try(:authenticate, params[:password])
+# put explanation
     return render action: 'new' unless @shop_owner
 
     #logged in, hooray

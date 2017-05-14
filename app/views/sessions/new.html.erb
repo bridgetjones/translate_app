@@ -1,11 +1,3 @@
-<!-- <h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p> -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>TranslateApp</title>
-    <%= csrf_meta_tags %>
-
 
 <h1>Log in</h1>
 <%=form_tag sessions_path do %>
@@ -20,10 +12,6 @@
 <%=submit_tag 'Log in' %>
 </p>
 <% end %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
     <div class="login-page">
   <div class="form">
