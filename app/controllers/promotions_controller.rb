@@ -5,7 +5,7 @@ class PromotionsController < ApplicationController
   # GET /promotions
   # GET /promotions.json
   def index
-    @promotions = current_shop_owner.promotion.all
+    @promotions = current_shop_owner.promotions.all
   end
 
   # GET /promotions/1
@@ -15,7 +15,7 @@ class PromotionsController < ApplicationController
 
   # GET /promotions/new
   def new
-    @promotion = current_shop_owner.promotion.new
+    @promotion = current_shop_owner.promotions.new
   end
 
 # only get the notes that belong to current shop owner logged in this sesion
@@ -27,7 +27,7 @@ class PromotionsController < ApplicationController
   # POST /promotions
   # POST /promotions.json
   def create
-    @promotion = current_shop_owner.promotion.new(promotion_params)
+    @promotion = current_shop_owner.promotions.new(promotion_params)
 # make notes that belong to the current shop owner
     respond_to do |format|
       if @promotion.save
@@ -67,7 +67,7 @@ class PromotionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_promotion
-      @promotion = current_shop_owner.promotion.find(params[:id])
+      @promotion = current_shop_owner.promotions.find(params[:id])
     end
 # only find notes of current shop owner logged in
     # Never trust parameters from the scary internet, only allow the white list through.
