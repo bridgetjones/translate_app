@@ -3,6 +3,7 @@
 one:
   name: MyString
   language: MyString
+<<<<<<< HEAD
   ph_number: MyString
   email: MyString
   shop_owner: one

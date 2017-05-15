@@ -4,7 +4,8 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
+
+    @customers = current_shop_owner.customers
   end
 
   # GET /customers/1
@@ -14,7 +15,8 @@ class CustomersController < ApplicationController
 
   # GET /customers/new
   def new
-    @customer = Customer.new
+    @shop_owner = current_shop_owner
+    @customer = Customer.new(shop_owner: current_shop_owner)
   end
 
   # GET /customers/1/edit
@@ -24,11 +26,11 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
-    @customer = Customer.new(customer_params)
+    @customer = Customer.new(customer_params_with_shop_owner)
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
+        format.html { redirect_to shop_owner_customer_path(current_shop_owner,@customer), notice: 'Customer was successfully created.' }
         format.json { render :show, status: :created, location: @customer }
       else
         format.html { render :new }
@@ -69,6 +71,10 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:name, :language, :ph_number, :email, :shop_owner_id)
+      params.require(:customer).permit(:name, :language, :ph_number, :email)
+    end
+
+    def customer_params_with_shop_owner
+      customer_params.merge(shop_owner: current_shop_owner)
     end
 end

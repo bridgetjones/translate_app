@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  resources :customers
-  resources :shop_owners
-  resource :sessions
+get 'sessions/new'
   root 'sessions#new'
+
+  resources :shop_owners do
+    resources :promotions
+    resources :customers
+  end
+  resources :sessions
   # I changed the root path to sessions -BJ
   get '/text' => 'shop_owners#original_text' , as: 'text'
   get '/translated_text' => 'shop_owners#translated_text'

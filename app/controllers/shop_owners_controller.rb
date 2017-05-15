@@ -37,20 +37,17 @@ class ShopOwnersController < ApplicationController
   def translated_text
     @translated_text = ShopOwner.find_by(original_text: original_text)
 
+
+    redirect_to root_path, notice: 'Created shop owner'
   end
 
   def create
     @shop_owner = ShopOwner.new(shop_owner_params)
-    if user.save
-    session[:shop_owner_id] = shop_owner.id
-    redirect_to '/'
-  else
-    redirect_to '/shop_owner'
-  end
 
     respond_to do |format|
       if @shop_owner.save
-        format.html { redirect_to @shop_owner, notice: 'Shop owner was successfully created.' }
+        session[:shop_owner_id] = @shop_owner.id
+        format.html { redirect_to shop_owner_customers_path(shop_owner_id: current_shop_owner), notice: 'Shop owner was successfully created.' }
         format.json { render :show, status: :created, location: @shop_owner }
       else
         format.html { render :new }
@@ -89,8 +86,7 @@ class ShopOwnersController < ApplicationController
     @shop_owner = ShopOwner.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def shop_owner_params
-    params.require(:shop_owner).permit(:name, :shop_name, :address, :user_name, :password)
+    params.require(:shop_owner).permit(:name, :shop_name, :address, :email, :password, :password_confirmation)
   end
 end

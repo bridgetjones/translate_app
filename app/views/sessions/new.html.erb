@@ -1,32 +1,30 @@
-<!-- <h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p> -->
-<!DOCTYPE html>
-<html>
-<head>
-  <title>TranslateApp</title>
-  <%= csrf_meta_tags %>
-
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
-
 <div class="login-page">
   <div class="form">
-    <form class="register-form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-    </form>
-    <form class="login-form">
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
-      <button>login</button>
-      <p class="message" id="button_clicked">Not registered? <a href="#">Create an Account</a></p>
-    </form>
+    <h1>Log in</h1>
+    <%=form_tag sessions_path, class:'login-form' do %>
+    <%=text_field_tag :email, nil, placeholder:'email' %>
+    <%=password_field_tag :password, nil, placeholder: 'password' %> </p>
+    <%=button_tag 'login' %>
+    <p class="message" id="button_clicked">Not registered? <%= link_to 'Create an Account', new_shop_owner_path %></p>
+    <% end %>
   </div>
 </div>
-<%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
 
-</html>
+<!-- <div class="login-page">
+  <div class="form"> -->
+    <!-- <form class="register-form">
+    <input type="text" placeholder="name"/>
+    <input type="password" placeholder="password"/>
+    <input type="text" placeholder="email address"/>
+    <button>create</button>
+    <p class="message">Already registered? <a href="#">Sign In</a></p>
+  </form> -->
+  <!-- <form class="login-form">
+    <input type="text" placeholder="username"/>
+    <input type="password" placeholder="password"/> -->
+    <!-- <button>login</button> -->
+    <!-- <p class="message" id="button_clicked">Not registered? <a href="#">Create an Account</a></p>
+  </form>
+</div> -->
+<!-- </div> -->
+<!-- <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %> -->

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Shop owner:</strong>
+  <%= @promotion.shop_owner.name.capitalize %>
+</p>
+
+<p>
+  <strong>English promo:</strong>
+  <%= @promotion.english_promo %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @promotion.body %>
+</p>
+
+<%= link_to 'Edit', edit_promotion_path(@promotion) %> |
+<%= link_to 'Back', promotions_path %>
