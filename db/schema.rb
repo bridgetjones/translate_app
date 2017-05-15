@@ -10,27 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170513003426) do
-=======
-ActiveRecord::Schema.define(version: 20170512233133) do
->>>>>>> 5e30305838df3a32a09de51606ac6cdb0abc179f
+ActiveRecord::Schema.define(version: 20170513193009) do
+
+  create_table "customers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "language"
+    t.string   "ph_number"
+    t.string   "email"
+    t.integer  "shop_owner_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["shop_owner_id"], name: "index_customers_on_shop_owner_id"
+  end
 
   create_table "shop_owners", force: :cascade do |t|
     t.string   "name"
     t.string   "shop_name"
     t.string   "address"
     t.string   "user_name"
-<<<<<<< HEAD
-    t.string   "password"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.text     "original_text"
-=======
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.text     "original_text"
     t.string   "password_digest"
->>>>>>> 5e30305838df3a32a09de51606ac6cdb0abc179f
   end
 
 end

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ShopOwnerTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  it "should have a name" do
+    assert true
+  end
 end

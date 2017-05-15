@@ -14,6 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$('.message a').click(function(){
-   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+$(document).on("turbolinks:load", function(){
+  $('#button_clicked a').html(){
+    $(this).click(function(){
+      console.log("Create an Account was clicked.");
+    });
+  });
 });

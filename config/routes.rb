@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :customers
   resources :shop_owners
   resource :sessions
   root 'sessions#new'

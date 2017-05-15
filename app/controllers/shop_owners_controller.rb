@@ -41,6 +41,12 @@ class ShopOwnersController < ApplicationController
 
   def create
     @shop_owner = ShopOwner.new(shop_owner_params)
+    if user.save
+    session[:shop_owner_id] = shop_owner.id
+    redirect_to '/'
+  else
+    redirect_to '/shop_owner'
+  end
 
     respond_to do |format|
       if @shop_owner.save

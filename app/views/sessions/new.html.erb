@@ -2,15 +2,15 @@
 <p>Find me in app/views/sessions/new.html.erb</p> -->
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TranslateApp</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>TranslateApp</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-    <div class="login-page">
+<div class="login-page">
   <div class="form">
     <form class="register-form">
       <input type="text" placeholder="name"/>
@@ -23,7 +23,7 @@
       <input type="text" placeholder="username"/>
       <input type="password" placeholder="password"/>
       <button>login</button>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
+      <p class="message" id="button_clicked">Not registered? <a href="#">Create an Account</a></p>
     </form>
   </div>
 </div>
