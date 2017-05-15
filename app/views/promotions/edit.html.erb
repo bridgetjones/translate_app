@@ -2,5 +2,5 @@
 
 <%= render 'form', promotion: @promotion %>
 
-<%= link_to 'Show', @promotion %> |
-<%= link_to 'Back', promotions_path %>
+<%= link_to 'Show', shop_owner_promotion_path(current_shop_owner,@promotion) %>
+<%= link_to 'Back', shop_owner_promotions_path(current_shop_owner) %>

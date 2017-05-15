@@ -50,4 +50,5 @@ ActiveRecord::Schema.define(version: 20170514201643) do
     t.text     "original_text"
     t.string   "email"
   end
+
 end

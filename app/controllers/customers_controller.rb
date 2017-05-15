@@ -58,7 +58,7 @@ class CustomersController < ApplicationController
   def destroy
     @customer.destroy
     respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
+      format.html { redirect_to shop_owner_customers_path(current_shop_owner), notice: 'Customer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,12 +66,12 @@ class CustomersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
-      @customer = Customer.find(params[:id])
+      @customer = current_shop_owner.customers.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:name, :language, :ph_number, :email)
+      params.require(:customer).permit(:name, :language, :ph_number, :email, :id)
     end
 
     def customer_params_with_shop_owner
