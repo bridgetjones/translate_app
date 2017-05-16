@@ -29,15 +29,18 @@ class ShopOwnersController < ApplicationController
     res = HTTParty.post url
     p res.parsed_response['data']['translations'][0]['translatedText']
     @original_text = ShopOwner.create(original_text: original_text)
+
     # byebug
   end
   # POST /shop_owners
   # POST /shop_owners.json
 
   def translated_text
-    @translated_text = ShopOwner.find_by(original_text: original_text)
-
-  #   redirect_to root_path, notice: 'Created shop owner'
+    original_text = !nil
+    sparky = ShopOwner.find_by(original_text: original_text)
+    @translated_text = sparky
+    render json: @translated_text
+    #   redirect_to root_path, notice: 'Created shop owner'
   end
 
   def create
