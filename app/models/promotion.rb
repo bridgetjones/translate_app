@@ -2,11 +2,30 @@ class Promotion < ApplicationRecord
   belongs_to :shop_owner
   has_many :customer_promotions
   has_many :customers, through: :customer_promotions
+
+  def send_all
+    self.shop_owner.customers.each do |customer|
+      send_to(customer)
+    end
+  end
+
+  def send_to(customer)
+    client.messages.create(
+      from: ENV["TWILIO_SOURCE_NUMBER"],
+      to: "+#{customer.ph_number}",
+      body: "#{self.body}"
+    )
+  end
+
+  def client
+    @client ||= Twilio::REST::Client.new
+  end
+
 end
 
 
-
-
+#
+#
 # this code works
 # @client = Twilio::REST::Client.new
 # @client.messages.create(
@@ -15,8 +34,8 @@ end
 #   body: 'Hey there!',
 #   media_url: 'http://example.com/smileyface.jpg' #optional
 # )
-
-#
+# #
+# #
 #
 # def send_text
 # @client = Twilio::REST::Client.new
@@ -26,7 +45,7 @@ end
 #   body: promotion.english_promo
 #   media_url: 'http://example.com/smileyface.jpg' #optional
 # )
-#
+# #
 
 
 # class TwilioController < ApplicationController
@@ -86,5 +105,5 @@ end
 
 
 
- # 
+ #
  # end

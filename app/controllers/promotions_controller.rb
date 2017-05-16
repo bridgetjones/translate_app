@@ -1,5 +1,5 @@
 class PromotionsController < ApplicationController
-  before_action :set_promotion, only: [:show, :edit, :update, :destroy]
+  before_action :set_promotion, only: [:show, :edit, :update, :destroy, :send_all_messages]
   before_action :require_logged_in
 
   # GET /promotions
@@ -46,7 +46,7 @@ class PromotionsController < ApplicationController
   def update
     respond_to do |format|
       if @promotion.update(promotion_params)
-        format.html { redirect_to @promotion, notice: 'Promotion was successfully updated.' }
+        format.html { redirect_to shop_owner_promotion_path(current_shop_owner,@promotion), notice: 'Promotion was successfully updated.' }
         format.json { render :show, status: :ok, location: @promotion }
       else
         format.html { render :edit }
@@ -63,6 +63,10 @@ class PromotionsController < ApplicationController
       format.html { redirect_to shop_owner_promotions_path(current_shop_owner), notice: 'Promotion was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def send_all_messages
+    @promotion.send_all
   end
 
   private
