@@ -15,12 +15,13 @@
   <tbody>
     <% @promotions.each do |promotion| %>
       <tr>
-        <td><%= promotion.shop_owner %></td>
+        <td><%= promotion.shop_owner.name %></td>
         <td><%= promotion.english_promo %></td>
         <td><%= promotion.body %></td>
-        <td><%= link_to 'Show', promotion %></td>
-        <td><%= link_to 'Edit', edit_promotion_path(promotion) %></td>
-        <td><%= link_to 'Destroy', promotion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', shop_owner_promotion_path(current_shop_owner,promotion) %></td>
+        <td><%= link_to 'Edit', edit_shop_owner_promotion_path(current_shop_owner,promotion) %></td>
+        <td><%= link_to 'Destroy', shop_owner_promotion_path(current_shop_owner,promotion), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Promotion', new_promotion_path %>
+<%= link_to 'New promotion', new_shop_owner_promotion_path(current_shop_owner) %>

@@ -31,7 +31,8 @@ class PromotionsController < ApplicationController
 # make notes that belong to the current shop owner
     respond_to do |format|
       if @promotion.save
-        format.html { redirect_to @promotion, notice: 'Promotion was successfully created.' }
+        format.html { redirect_to shop_owner_promotion_path(current_shop_owner,@promotion), notice: 'Promotion was successfully created.' }
+        # send_text.promotion
         format.json { render :show, status: :created, location: @promotion }
       else
         format.html { render :new }
@@ -59,12 +60,13 @@ class PromotionsController < ApplicationController
   def destroy
     @promotion.destroy
     respond_to do |format|
-      format.html { redirect_to promotions_url, notice: 'Promotion was successfully destroyed.' }
+      format.html { redirect_to shop_owner_promotions_path(current_shop_owner), notice: 'Promotion was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_promotion
       @promotion = current_shop_owner.promotions.find(params[:id])

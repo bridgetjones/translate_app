@@ -15,5 +15,5 @@
   <%= @promotion.body %>
 </p>
 
-<%= link_to 'Edit', edit_promotion_path(@promotion) %> |
-<%= link_to 'Back', promotions_path %>
+<%= link_to 'Edit', edit_shop_owner_promotion_path(current_shop_owner,@promotion) %> |
+<%= link_to 'Back', shop_owner_promotions_path(current_shop_owner) %>
