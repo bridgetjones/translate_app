@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-    <% if @customers.nil? %>
+    <% if @customers.empty? %>
     <p>There are no customers.</p>
     <% else %>
     <% @customers.each do |customer| %>

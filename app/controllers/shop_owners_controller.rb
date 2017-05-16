@@ -24,12 +24,12 @@ class ShopOwnersController < ApplicationController
   end
 
   def original_text
-    original_text = "hello world"
+    original_text = original_text
     url = "https://translation.googleapis.com/language/translate/v2?key=#{ENV['API_KEY']}&target=es&q=#{original_text}"
     res = HTTParty.post url
     p res.parsed_response['data']['translations'][0]['translatedText']
     @original_text = ShopOwner.create(original_text: original_text)
-    byebug
+    # byebug
   end
   # POST /shop_owners
   # POST /shop_owners.json
@@ -37,8 +37,7 @@ class ShopOwnersController < ApplicationController
   def translated_text
     @translated_text = ShopOwner.find_by(original_text: original_text)
 
-
-    redirect_to root_path, notice: 'Created shop owner'
+  #   redirect_to root_path, notice: 'Created shop owner'
   end
 
   def create
@@ -87,6 +86,6 @@ class ShopOwnersController < ApplicationController
   end
 
   def shop_owner_params
-    params.require(:shop_owner).permit(:name, :shop_name, :address, :email, :password, :password_confirmation)
+    params.require(:shop_owner).permit(:name, :shop_name, :address, :email, :password, :password_confirmation, :original_text)
   end
 end
