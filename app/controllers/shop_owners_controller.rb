@@ -24,12 +24,16 @@ class ShopOwnersController < ApplicationController
   end
 
   def original_text
-    original_text = original_text
+    @promotion = Promotion.new
+    if params[:promotion]
+      original_text = params[:promotion][:english_promo]
+    end
     url = "https://translation.googleapis.com/language/translate/v2?key=#{ENV['API_KEY']}&target=es&q=#{original_text}"
     res = HTTParty.post url
-    p res.parsed_response['data']['translations'][0]['translatedText']
-    @original_text = ShopOwner.create(original_text: original_text)
-
+    @result = res.parsed_response['data']['translations'][0]['translatedText']
+    if params[:promotion]
+      promotion = Promotion.create(shop_owner_id: ShopOwner.first.id, english_promo: original_text)
+    end
     # byebug
   end
   # POST /shop_owners
