@@ -20,8 +20,8 @@
         <td><%= promotion.body %></td>
         <td><%= link_to 'Show', shop_owner_promotion_path(current_shop_owner,promotion) %></td>
         <td><%= link_to 'Edit', edit_shop_owner_promotion_path(current_shop_owner,promotion) %></td>
+        <td><%= link_to 'Send', shop_owner_promotion_send_all_path(current_shop_owner,promotion), method: :post %></td>
         <td><%= link_to 'Destroy', shop_owner_promotion_path(current_shop_owner,promotion), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
       </tr>
     <% end %>
   </tbody>
