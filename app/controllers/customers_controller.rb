@@ -4,7 +4,6 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-
     @customers = current_shop_owner.customers
   end
 
@@ -21,13 +20,13 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
-    @customer = Customer.update(customer_params)
+
   end
 
   # POST /customers
   # POST /customers.json
   def create
-    @customer = Customer.new(customer_params_with_shop_owner)
+    @customer = current_shop_owner.customers.new(customer_params)
 
     respond_to do |format|
       if @customer.save
@@ -75,7 +74,4 @@ class CustomersController < ApplicationController
       params.require(:customer).permit(:name, :language, :ph_number, :email)
     end
 
-    def customer_params_with_shop_owner
-      customer_params.merge(shop_owner: current_shop_owner)
-    end
 end

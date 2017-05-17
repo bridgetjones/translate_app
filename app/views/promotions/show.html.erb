@@ -16,10 +16,30 @@
 </p>
 
 <p>
+  <strong>SendTime:</strong>
+  <% if @promotion.sent? %>
+    Sent <%= time_ago_in_words @promotion.sent_time %> ago.
+  <% else %>
+    <% if @promotion.overdue? %>
+      Will be sent shortly!
+    <% else %>
+      Will be sent in <%= time_ago_in_words @promotion.send_time %>.
+    <% end %>
+  <% end %>
+</p>
+
+<h2>Customers</h2>
+<ul>
+  <% @promotion.customers.each do |customer| %>
+    <li><%= customer.name %>
+  <% end %>
+</ul>
+
   <strong>Translated Text:</stong>
     <%= @promotion.translated_text %>
 <%= @result %>
   </p>
+
 
 <%= link_to 'Edit', edit_shop_owner_promotion_path(current_shop_owner,@promotion) %> |
 <%= link_to 'Back', shop_owner_promotions_path(current_shop_owner) %>

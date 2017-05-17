@@ -3,10 +3,37 @@ class Promotion < ApplicationRecord
   has_many :customer_promotions
   has_many :customers, through: :customer_promotions
 
+# This code explain how to send a scheduled text promotion
+
+# class method becuase self
+  def self.unsent
+   where(sent_time: nil)
+  end
+# checking of many overdue
+  def self.overdue
+    self.unsent.where('send_time < ?', Time.zone.now)
+  end
+
+# double negative really just checking for time
+  def sent?
+    not self.sent_time.nil?
+  end
+# checking for if single one is overdue
+  def overdue?
+    self.send_time < Time.zone.now
+  end
+
+
+
+
   def send_all
+    # should be
+    # self.customers.each
+# changed this from self.shop_owner.customers.each HOW COME?
     self.shop_owner.customers.each do |customer|
       send_to(customer)
     end
+    self.update(sent_time: Time.zone.now)
   end
 
   def send_to(customer)
