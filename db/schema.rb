@@ -36,10 +36,11 @@ ActiveRecord::Schema.define(version: 20170517200743) do
     t.integer  "shop_owner_id"
     t.string   "english_promo"
     t.text     "body"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.datetime "send_time"
     t.datetime "sent_time"
+    t.text     "translated_text"
     t.index ["shop_owner_id"], name: "index_promotions_on_shop_owner_id"
   end
 

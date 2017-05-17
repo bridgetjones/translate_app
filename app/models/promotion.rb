@@ -38,9 +38,9 @@ class Promotion < ApplicationRecord
 
   def send_to(customer)
     client.messages.create(
-      from: ENV["TWILIO_SOURCE_NUMBER"],
-      to: "+#{customer.ph_number}",
-      body: "#{self.body}"
+    from: ENV["TWILIO_SOURCE_NUMBER"],
+    to: "+#{customer.ph_number}",
+    body: "#{self.body}"
     )
   end
 
@@ -48,7 +48,41 @@ class Promotion < ApplicationRecord
     @client ||= Twilio::REST::Client.new
   end
 
+  def translate(body)
+    # @promotion = Promotion.new
+    # if params[:promotion]
+    # end
+    url = "https://translation.googleapis.com/language/translate/v2?key=#{ENV['API_KEY']}&target=es&q=#{body}"
+    res = HTTParty.post url
+    @result = res.parsed_response['data']['translations'][0]['translatedText']
+    self.translated_text = @result
+    # if params[:promotion]
+      # promotion = Promotion.create(shop_owner_id: ShopOwner.first.id, body: original_text)
+    # end
+    # byebug
+  end
+  # POST /shop_owners
+  # POST /shop_owners.json
+
+  # def translated_text
+  #   original_text = !nil
+  #   sparky = ShopOwner.find_by(original_text: original_text)
+  #   @translated_text = sparky
+  #   render json: @translated_text
+  #   #   redirect_to root_path, notice: 'Created shop owner'
+  # end
+
+  def spanish
+    spanish = []
+    @customers.each do |customer|
+      if customer.language == 'spanish'
+        spanish << customer
+      end
+    end
+  end
+
 end
+
 
 
 #
@@ -132,5 +166,5 @@ end
 
 
 
- #
- # end
+#
+# end

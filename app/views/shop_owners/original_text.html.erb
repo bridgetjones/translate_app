@@ -1,13 +1,11 @@
 <h1>Translate Here</h1>
 
-<%= form_for @original_text, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-  <%= f.text_area :original_text, size: "60x12" %>
+<%= form_for @promotion, url: {action: "original_text"}, html: {class: "nifty_form"} do |f| %>
+  <%= f.text_area :body, size: "60x12" %>
   <%= f.submit "Create" %>
 <% end %>
 
 <h1>Translations</h1>
-<%= form_for @original_text, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-  <%= f.text_area :original_text, size: "60x12" %>
-<% end %>
+<%= @result %>
 
-<%= link_to 'Back', shop_owners_path %>
+<!-- <%= link_to 'Back', shop_owners_path %> -->
