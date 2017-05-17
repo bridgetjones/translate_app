@@ -28,6 +28,8 @@ class PromotionsController < ApplicationController
   # POST /promotions.json
   def create
     @promotion = current_shop_owner.promotions.new(promotion_params)
+    @promotion.translate(@promotion.body)
+
 # make notes that belong to the current shop owner
     respond_to do |format|
       if @promotion.save

@@ -23,30 +23,6 @@ class ShopOwnersController < ApplicationController
   def edit
   end
 
-  def original_text
-    @promotion = Promotion.new
-    if params[:promotion]
-      original_text = params[:promotion][:english_promo]
-    end
-    url = "https://translation.googleapis.com/language/translate/v2?key=#{ENV['API_KEY']}&target=es&q=#{original_text}"
-    res = HTTParty.post url
-    @result = res.parsed_response['data']['translations'][0]['translatedText']
-    if params[:promotion]
-      promotion = Promotion.create(shop_owner_id: ShopOwner.first.id, english_promo: original_text)
-    end
-    # byebug
-  end
-  # POST /shop_owners
-  # POST /shop_owners.json
-
-  def translated_text
-    original_text = !nil
-    sparky = ShopOwner.find_by(original_text: original_text)
-    @translated_text = sparky
-    render json: @translated_text
-    #   redirect_to root_path, notice: 'Created shop owner'
-  end
-
   def create
     @shop_owner = ShopOwner.new(shop_owner_params)
 

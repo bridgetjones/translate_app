@@ -8,8 +8,8 @@ get 'sessions/new'
   end
   resources :sessions
   # I changed the root path to sessions -BJ
-  get '/text'            => 'shop_owners#original_text'
-  post '/text'           => 'shop_owners#original_text'
+  # get '/text'            => 'shop_owners#original_text'
+  # post '/text'           => 'shop_owners#original_text'
   get '/translated_text' => 'shop_owners#translated_text'
   get '/shop_owner'      => 'shop_owners#new'
 
