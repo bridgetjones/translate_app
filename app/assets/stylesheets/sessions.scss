@@ -2,11 +2,11 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 body {
-  background: #00FFFF;
-  background: -webkit-linear-gradient(right, #26c6da, #8DC26F);
-  background: -moz-linear-gradient(right, #26c6da, #8DC26F);
-  background: -o-linear-gradient(right, #26c6da, #8DC26F);
-  background: linear-gradient(to left, #26c6da, #8DC26F);
+  background: #FF8C00;
+  background: -webkit-linear-gradient(right, #3090C7, #3090C7);
+  background: -moz-linear-gradient(right, #3090C7, #3090C7);
+  background: -o-linear-gradient(right, #3090C7, #3090C7);
+  background: linear-gradient(to left, #3090C7, #3090C7);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -25,7 +25,7 @@ body {
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  box-shadow: #900000;
 }
 .form input {
   font-family: "Roboto", sans-serif;
@@ -42,18 +42,18 @@ body {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4CAF50;
+  background: #B8860B;
   width: 100%;
   border: 0;
   padding: 15px;
-  color: #FFFFFF;
+  color: white;
   font-size: 14px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: #43A047;
+  background: #FF4500;
 }
 .form .message {
   margin: 15px 0 0;
@@ -61,7 +61,7 @@ body {
   font-size: 12px;
 }
 .form .message a {
-  color: #4CAF50;
+  color: #FF4500;
   text-decoration: none;
 }
 .form .register-form {
@@ -94,7 +94,7 @@ body {
   font-size: 12px;
 }
 .container .info span a {
-  color: #000000;
+  color: #400000;
   text-decoration: none;
 }
 .container .info span .fa {

@@ -1,3 +1,354 @@
 // Place all the styles related to the Customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/** ### MAIN ###
+	-COLORS
+		ColorPrimary 				rgb(30,130,200)
+		ColorPrimaryDark 		rgb(0,100,170)
+		ColorSecondary
+		ColorSecondaryDark
+		TextColorPrimary
+		TextColorSecondary
+
+	-Paddings and Keylines
+		-Aside
+			padding: 20px 20px
+		-Main
+			padding: 20px 40px
+			Keyline @250px
+*/
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300|Material+Icons);
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	font-family: Roboto, sans-serif;
+	overflow: hidden;
+}
+a{
+	text-decoration: none;
+	color: inherit;
+}
+p a,
+a.link{
+	color: rgb(225,25,50);
+	border-bottom: 1px dotted transparent;
+	transition: all .3s;
+}
+p a:hover,
+a.link:hover{
+	border-color: rgb(225,25,50);
+}
+p + p{
+
+}
+strong{
+	font-weight: 500;
+}
+
+/* ### Plugins ### */
+/* Fancy trigger just for CSS label-input combis, if u know what i mean :D*/
+.FancyTriger{
+	display: none;
+}
+.FancyInputTrigger{
+	cursor: pointer;
+}
+
+/* Material icons reset */
+.material-icons{
+	font-size: inherit;
+}
+
+/* Contextmenu */
+.ContextMenu{
+	background-color: rgb(255,255,255);
+	box-shadow: 7px 5px 20px rgba(0,0,0, .5);
+	list-style: none;
+	min-width: 150px;
+	border-radius: 3px;
+	z-index: 1000;
+}
+.ContextMenu li{
+	list-style-type: none;
+	font-size: 1rem;
+	line-height: normal;
+	text-transform: none;
+	color: rgb(0,0,0);
+}
+.ContextMenu li a{
+	display: block;
+	padding: 7px 20px;
+	transition: all .3s;
+}
+.ContextMenu li:hover a{
+	background-color: rgba(0,0,0, .1);
+}
+.ContextMenu li i{
+	font-size: 1.2em;
+	vertical-align: top;
+	margin-right: 10px;
+}
+/* snackbar */
+.SnackbarWrapper{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 640px;
+	height: 0px;
+	z-index: 100;
+}
+.SnackbarWrapper .Snack{
+	width: 100%;
+	background-color: rgb(50,50,50);
+	color: rgb(255,255,255);
+	border-radius: 2px 2px 0 0;
+	box-shadow: 0 0 10px rgba(0,0,0, .4);
+	transform: translateY(0);
+	transition: transform .4s .1s;
+}
+.SnackbarWrapper .Snack .SnackInner{
+	opacity: 0;
+	transition: opacity .4s .3s;
+	display: flex;
+	justify-content: space-between;
+}
+.SnackbarWrapper .Snack .SnackInner .SnackText{
+	padding: 20px;
+}
+.SnackbarWrapper .Snack .SnackInner .SnackOptions{
+	padding: 9px;
+	whitespace: nowrap;
+}
+.SnackbarWrapper .Snack .SnackInner .SnackOption{
+	display: inline-block;
+	padding: 8px;
+	text-transform: uppercase;
+	color: rgb(225,25,50);
+	font-family: inherit;
+	font-size: 1.1rem;
+	background-color: transparent;
+	border: none;
+	letter-spacing: .6px;
+	border-radius: 2px;
+	transition: all .4s;
+	cursor: pointer;
+}
+.SnackbarWrapper .Snack .SnackInner .SnackOption:hover{
+	background-color: rgba(255,255,255, .1);
+}
+.SnackbarWrapper .Snack .SnackInner .SnackOption + .SnackOption{
+	margin-left: 8px;
+}
+/* ### HEADER AREA ### */
+.HeaderWrapper{
+	background-color: rgb(225,25,50);
+	width: 100%;
+	height: 70px;
+	line-height: 70px;
+	text-transform: uppercase;
+	color: rgb(255,255,255);
+	font-weight: 400;
+	font-size: 27px;
+	box-shadow: 5px 0 10px rgba(0,0,0, .5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+}
+.HeaderWrapper:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.LogoArea{
+	width: 250px;
+	float: left;
+	background-color: rgb(200,0,25);
+	padding: 0 20px;
+}
+.HeaderWrapper .RightSideWrapper{
+	float: left;
+	width: calc(100% - 250px);
+	display: flex;
+	justify-content: space-between;
+  background-color: #089de3;
+
+}
+.PageNameArea{
+	padding: 0 20px;
+	flex-basis: 0;
+}
+.SearchArea{
+	flex-basis: auto;
+	width: 100%;
+}
+.SearchArea input{
+	height: 35px;
+	width: 100%;
+	border: none;
+	background-color: rgba(200,0,25, .5);
+	color: inherit;
+	border-radius: 3px;
+	padding: 7px;
+	vertical-align: 5px;
+	transition: all .3s;
+}
+.SearchArea input:focus{
+	background-color: rgb(255,255,255);
+	color: rgb(0,0,0);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+.ToolbarArea{
+	display: flex;
+	flex-basis: 0;
+	padding: 0 20px;
+}
+.ToolbarArea i{
+	vertical-align: -5px;
+	font-size: 33px;
+}
+.Settings{
+}
+.Notifications{
+	padding: 0 10px;
+}
+.ProfileActions{
+
+}
+.ProfileActions img{
+	height: 40px;
+	border-radius: 50%;
+	vertical-align: -9px;
+}
+.ProfileActions > ul{
+	position: absolute;
+	right: 20px;
+	top: 55px;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .4s 0s, visibility 0s .4s;
+}
+.ProfileActions *:checked ~ ul{
+	visibility: visible;
+	opacity: 1;
+	transition: opacity .4s .1s, visibility 0s 0s;
+}
+.LowerWrapper{
+	display: flex;
+	height: calc(100vh - 70px);
+	width: 100%;
+	overflow: hidden;
+	margin-top: 70px;
+	position: relative;
+}
+.AsideWrapper{
+	width: 250px;
+	background-color: #800000;
+	height: 100%;
+	overflow: auto;
+}
+.MainWrapper{
+	width: calc(100% - 0px - 75px);
+	background-color: 	#003030;
+	height: 100%;
+	overflow: auto;
+}
+.ChatCloseOverlay{
+	width: 0px;
+	height: 100%;
+	background-color: rgba(0,0,0, 0);
+	transition: background-color .3s 0s, width .4s .2s, right .4s ease-in .2s;
+	right: 75px;
+	top: 0;
+	position: absolute;
+	z-index: 100;
+}
+.ChatCloseOverlay.Open{
+	background-color: rgba(0,0,0, .5);
+	right: 350px;
+	width: calc(100% - 350px);
+	transition: background-color .3s .3s, width .4s 0s, right .4s ease-out 0s;
+}
+.ChatWrapper{
+	width: 75px;
+	height: 100%;
+	right: 0;
+	position: absolute;
+	background-color: #800000;
+	box-shadow: 0 -5px 10px rgba(0,0,0, .5);
+	transition: width .4s ease-in .2s;
+	display: flex;
+}
+.ChatWrapper.Open{
+	width: 350px;
+	transition: width .4s ease-out 0s;
+}
+.ChatWrapper > ul{
+	list-style: none;
+	padding: 17px 0;
+	width: 75px;
+}
+.ChatWrapper > ul > li{
+	list-style-type: none;
+	padding: 4px 0;
+	cursor: pointer;
+}
+.ChatWrapper .ChatUserImageArea{
+	text-align: center;
+}
+.ChatWrapper .ChatUserImageArea img{
+	height: 40px;
+	border-radius: 50%;
+}
+.ChatWrapper .ChatUserChatWrapper{
+	background-color: rgb(255,255,255);
+	transform: translate(125px, 0);
+	opacity: 0;
+	width: calc(100% - 75px);
+	height: calc(100% - 40px);
+	margin: 20px 0;
+	box-shadow: 0 0 5px rgba(0,0,0, .1);
+	border-radius: 2px;
+	transition: all .4s .2s, width 0s 0s;
+}
+.ChatWrapper.Open .ChatUserChatWrapper{
+	width: 255px;
+	margin: 20px 20px 20px 0;
+	transform: translate(0, 0);
+	opacity: 1;
+}
+.ChatUserMetaArea{
+	border-bottom: 1px solid rgb(200,200,200);
+	line-height: 38px;
+	color: rgb(30,30,35);
+}
+.ChatUserMetaArea a{
+	font-weight: 400;
+	font-size: 20px;
+	padding: 0 20px;
+}
+.ChatUserMetaArea i{
+	display: inline-block;
+	float: right;
+	font-size: 20px;
+	padding: 0 20px;
+	line-height: inherit;
+}
+.ChatUserInputArea{
+	border-top: 1px solid rgb(200,200,200);
+	line-height: 38px;
+	color: rgb(30,30,35);
+}
+
+.CustomerShow {
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  font-weight: 400;
+}
