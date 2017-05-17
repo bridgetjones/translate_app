@@ -1,4 +1,5 @@
-<%= form_for(promotion, url: shop_owner_promotions_path) do |f| %>
+
+<%= form_for([current_shop_owner, promotion]) do |f| %>
   <% if promotion.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(promotion.errors.count, "error") %> prohibited this promotion from being saved:</h2>
@@ -24,6 +25,19 @@
     <%= f.label :body %>
     <%= f.text_area :body %>
   </div>
+
+  <div class="field">
+     <%= f.label :send_time %>
+     <%= f.datetime_field :send_time %>
+   </div>
+
+   <div class="field">
+     <%= label_tag "Select Customers" %>
+     <%= collection_select :customer, :id,
+       current_shop_owner.customers, :id, :name,
+       {prompt: "Select a customer"},
+       {multiple: true} %>
+   </div>
 
   <div class="actions">
     <%= f.submit %>

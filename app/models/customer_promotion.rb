@@ -1,4 +1,4 @@
 class CustomerPromotion < ApplicationRecord
-  belongs_to :promotions
-  belongs_to :customers
+  belongs_to :promotion
+  belongs_to :customer
 end

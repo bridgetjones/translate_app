@@ -78,7 +78,7 @@ class PromotionsController < ApplicationController
 # only find notes of current shop owner logged in
     # Never trust parameters from the scary internet, only allow the white list through.
     def promotion_params
-      params.require(:promotion).permit(:english_promo, :body)
+      params.require(:promotion).permit(:english_promo, :body, :send_time)
     end
 end
 # dont permit shop owner id as parameter

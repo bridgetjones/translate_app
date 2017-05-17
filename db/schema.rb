@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514201643) do
+ActiveRecord::Schema.define(version: 20170517200743) do
 
   create_table "customer_promotions", id: false, force: :cascade do |t|
     t.integer  "customer_id"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170514201643) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.datetime "send_time"
+    t.datetime "sent_time"
     t.index ["shop_owner_id"], name: "index_promotions_on_shop_owner_id"
   end
 
