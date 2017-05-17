@@ -30,7 +30,7 @@ class Promotion < ApplicationRecord
     # should be
     # self.customers.each
 # changed this from self.shop_owner.customers.each HOW COME?
-    self.customers.each do |customer|
+    self.shop_owner.customers.each do |customer|
       send_to(customer)
     end
     self.update(sent_time: Time.zone.now)
