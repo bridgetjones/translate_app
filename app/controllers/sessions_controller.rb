@@ -9,6 +9,6 @@ class SessionsController < ApplicationController
 
     #logged in, hooray
     session[:shop_owner_id] = @shop_owner.id
-    redirect_to shop_owner_customers_path(@shop_owner.id)
+    redirect_to dashboard_path(shop_owner: @shop_owner.id)
   end
 end

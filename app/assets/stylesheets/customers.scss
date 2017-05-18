@@ -169,7 +169,7 @@ strong{
 .LogoArea{
 	width: 250px;
 	float: left;
-	background-color: rgb(200,0,25);
+	background-color: #211A8A;
 	padding: 0 20px;
 }
 .HeaderWrapper .RightSideWrapper{
@@ -177,7 +177,7 @@ strong{
 	width: calc(100% - 250px);
 	display: flex;
 	justify-content: space-between;
-  background-color: #089de3;
+  background-color: #A4A2CF;
 
 }
 .PageNameArea{
@@ -249,13 +249,13 @@ strong{
 }
 .AsideWrapper{
 	width: 250px;
-	background-color: #800000;
+	background-color: #B7005C;
 	height: 100%;
 	overflow: auto;
 }
 .MainWrapper{
 	width: calc(100% - 0px - 75px);
-	background-color: 	#003030;
+	background-color: #D36A92;
 	height: 100%;
 	overflow: auto;
 }
@@ -280,7 +280,7 @@ strong{
 	height: 100%;
 	right: 0;
 	position: absolute;
-	background-color: #800000;
+	background-color: #B7005C;
 	box-shadow: 0 -5px 10px rgba(0,0,0, .5);
 	transition: width .4s ease-in .2s;
 	display: flex;
@@ -351,4 +351,19 @@ strong{
   color: white;
   font-size: 15px;
   font-weight: 400;
+}
+
+table,
+th,
+td {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-width: 1px 0 0 1px;
+    margin-bottom: 24px;
+    width: 92%;
+    text-align: center;
 }

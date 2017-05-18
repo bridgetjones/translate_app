@@ -3,10 +3,10 @@
 
 body {
   background: #FF8C00;
-  background: -webkit-linear-gradient(right, #3090C7, #3090C7);
-  background: -moz-linear-gradient(right, #3090C7, #3090C7);
-  background: -o-linear-gradient(right, #3090C7, #3090C7);
-  background: linear-gradient(to left, #3090C7, #3090C7);
+  background: -webkit-linear-gradient(right, #03256C, #2541B2);
+  background: -moz-linear-gradient(right, #03256C, #2541B2);
+  background: -o-linear-gradient(right, #03256C, #2541B2);
+  background: linear-gradient(to left, #03256C, #2541B2);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -26,6 +26,7 @@ body {
   padding: 45px;
   text-align: center;
   box-shadow: #900000;
+  height: 24rem;
 }
 .form input {
   font-family: "Roboto", sans-serif;
@@ -82,7 +83,7 @@ body {
   margin: 50px auto;
   text-align: center;
 }
-.container .info h1 {
+.container .info h3 {
   margin: 0 0 15px;
   padding: 0;
   font-size: 36px;
