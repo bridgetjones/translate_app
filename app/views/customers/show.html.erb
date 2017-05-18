@@ -1,28 +1,97 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Name:</strong>
-  <%= @customer.name %>
-</p>
+<header class="HeaderWrapper">
+	<div class="LogoArea">MOBY</div>
+	<div class="RightSideWrapper">
+		<div class="PageNameArea">Dashboard</div>
+		<div class="ToolbarArea">
+			<div class="Settings">
+				<label class="FancyInputTrigger"><i class="material-icons">settings</i></label>
+			</div>
+			<div class="Notifications">
+				<i class="material-icons">notifications_none</i>
+			</div>
+			<div class="ProfileActions">
+				<label for="ProfileActionsCheckbox" class="FancyInputTrigger"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/48.jpg" alt="Adham Dannaway"></label>
+				<input id="ProfileActionsCheckbox" type="checkbox" class="FancyTriger">
+				<ul class="ContextMenu">
+					<li><a href="#"><i class="material-icons">power_settings_new</i> Abmelden</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+<div class="LowerWrapper">
+	<aside class="AsideWrapper">
 
-<p>
-  <strong>Language:</strong>
-  <%= @customer.language %>
-</p>
+	</aside>
+	<main class="MainWrapper">
 
-<p>
-  <strong>Ph number:</strong>
-  <%= @customer.ph_number %>
-</p>
+    <p id="notice"><%= notice %></p>
+    <div class="CustomerShow">
+    <p>
+      <strong>Name:</strong>
+      <%= @customer.name %>
+    </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @customer.email %>
-</p>
+    <p>
+      <strong>Language:</strong>
+      <%= @customer.language %>
+    </p>
 
-<p>
-  <strong>Shop owner:</strong>
-  <%= @customer.shop_owner.name %>
-</p>
+    <p>
+      <strong>Ph number:</strong>
+      <%= @customer.ph_number %>
+    </p>
 
-<%= link_to 'Edit', edit_shop_owner_customer_path(current_shop_owner,@customer) %> |
-<%= link_to 'Back', shop_owner_customers_path(current_shop_owner) %>
+    <p>
+      <strong>Email:</strong>
+      <%= @customer.email %>
+    </p>
+
+    <p>
+      <strong>Shop owner:</strong>
+      <%= @customer.shop_owner.name %>
+    </p>
+    <%= link_to 'Edit', edit_shop_owner_customer_path(current_shop_owner, @customer) %> |
+    <%= link_to 'Back', shop_owner_customers_path(current_shop_owner) %>
+</div>
+  </main>
+
+	<div class="ChatCloseOverlay"></div>
+	<aside class="ChatWrapper">
+		<ul>
+			<li data-chat-username="Allison Grayce" data-chat-uid="allisongrayce">
+				<div class="ChatUserImageArea"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/allisongrayce/48.jpg" alt="Allison Grayce"></div>
+			</li>
+			<li data-chat-username="DELIRIUM" data-chat-uid="delirium">
+				<div class="ChatUserImageArea"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/mist3r_c0r3/48.jpg" alt="DELIRIUM"></div>
+			</li>
+			<li data-chat-username="Jad Limcaco" data-chat-uid="jadlimcaco">
+				<div class="ChatUserImageArea"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/jadlimcaco/48.jpg" alt="Jad Limcaco"></div>
+			</li>
+			<li data-chat-username="Aziel S" data-chat-uid="azielsilas">
+				<div class="ChatUserImageArea"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/azielsilas/48.jpg" alt="Aziel S"></div>
+			</li>
+			<li data-chat-username="Louie" data-chat-uid="mantia">
+				<div class="ChatUserImageArea"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/mantia/48.jpg" alt="Louie"></div>
+			</li>
+			<li data-chat-username="Tony Peterson" data-chat-uid="tonypeterson">
+				<div class="ChatUserImageArea"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/tonypeterson/48.jpg" alt="Tony Peterson"></div>
+			</li>
+			<li data-chat-username="Luca Orio" data-chat-uid="lucaorio_">
+				<div class="ChatUserImageArea"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/lucaorio_/48.jpg" alt="Luca Orio"></div>
+			</li>
+			<li data-chat-username="Akif Yaldır" data-chat-uid="akifyaldir">
+				<div class="ChatUserImageArea"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/akifyaldir/48.jpg" alt="Akif Yaldır"></div>
+			</li>
+		</ul>
+		<div class="ChatUserChatWrapper">
+			<div class="ChatUserMetaArea">
+				<a href="#jadlimcaco" >Jad Limcaco</a><i class="material-icons">launch</i>
+			</div>
+			<div class="ChatUserChatArea">
+			</div>
+			<div class="ChatUserInputArea">
+			</div>
+		</div>
+	</aside>
+</div>
