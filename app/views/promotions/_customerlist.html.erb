@@ -1,0 +1,10 @@
+<div class="field">
+  <%= label_tag "Select Customers" %>
+  <%= select_tag 'customers', customers.collect{|c| [c.id, c.name]} %>
+  <%= collection_select :customer, :id,
+    customers, :id, :name,
+    {prompt: "Select a customer"},
+    {multiple: true} %>
+</div>
+
+<%#= select_tag "customers", options_from_collection_for_select(customers, "id", "name")%>
