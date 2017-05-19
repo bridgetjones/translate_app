@@ -23,12 +23,18 @@ class Promotion < ApplicationRecord
     self.send_time < Time.zone.now
   end
 
-
-
+def send_to_customers
+  self.customers.each do |customer|
+    send_to(customer)
+  end
+  self.update(sent_time: Time.zone.now)
+end
 
   def send_all
     # should be
-    # self.customers.each
+    # self.customers.each when we add the code to send to indidvudual customers in this case
+    #  if we send to all then would have to select all customers on list or make logic that allows ..all
+    # customer
 # changed this from self.shop_owner.customers.each HOW COME?
     self.shop_owner.customers.each do |customer|
       send_to(customer)

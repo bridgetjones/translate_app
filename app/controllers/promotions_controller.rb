@@ -2,6 +2,7 @@ class PromotionsController < ApplicationController
   before_action :set_promotion, only: [:show, :edit, :update, :destroy, :send_all_messages]
   before_action :require_logged_in
 
+
   # GET /promotions
   # GET /promotions.json
   def index
@@ -27,8 +28,9 @@ class PromotionsController < ApplicationController
   # POST /promotions
   # POST /promotions.json
   def create
-    @promotion = current_shop_owner.promotions.new(promotion_params)
-    @promotion.translate(@promotion.body)
+    @promotion = current_shop_owner.promotions.new(promotion_params.merge(customer_ids: customer_ids))
+  
+    # @promotion.translate(@promotion.body)
 
 # make notes that belong to the current shop owner
     respond_to do |format|
@@ -81,6 +83,10 @@ class PromotionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def promotion_params
       params.require(:promotion).permit(:english_promo, :body, :send_time)
+    end
+
+    def customer_ids
+      params[:customer].require(:id).select &:present?
     end
 end
 # dont permit shop owner id as parameter
