@@ -1,42 +1,97 @@
 <!-- <%= render 'form', shop_owner: @shop_owner %>
 <%= link_to 'Back', shop_owners_path %> -->
 <h1> Registration New Shop Owner</h1>
+<div class="register-form">
+  <%= form_for @shop_owner do |f| %>
 
-<%= form_for @shop_owner do |f| %>
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <!-- <input id="icon_prefix" type="text" class="validate"> -->
+          <label for="icon_prefix"></label>
+          <%=f.label :name %>
+          <%=f.text_field :name %>
+        </div>
 
-<p>
-  <%=f.label :name %>
-  <%=f.text_field :name %>
-</p>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">business</i>
+          <!-- <input id="icon_prefix" type="text" class="validate"> -->
+          <label for="icon_prefix"></label>
+          <%=f.label :shop_name %>
+          <%=f.text_field :shop_name %>
+        </div>
 
-<p>
-  <%=f.label :shop_name %>
-  <%=f.text_field :shop_name %>
-</p>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">home</i>
+          <!-- <input id="icon_prefix" type="text" class="validate"> -->
+          <label for="icon_prefix"></label>
+          <%=f.label :address %>
+          <%=f.text_field :address %>
+        </div>
 
-<p>
-  <%=f.label :address %>
-  <%=f.text_field :address %>
-</p>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">email</i>
+          <label for="icon_prefix"></label>
+          <%= f.email_field :email, id: "icon_prefix", class: "validate"  %>
+          <%= f.label :email %>
+        </div>
+      </div>
 
-<p>
-  <%=f.label :email %>
-  <%=f.text_field :email %>
-</p>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">vpn_key</i>
+        <!-- <input id="password" type="password" class="validate"> -->
+        <label for="password"></label>
+        <%=f.label :password %>
+        <%=f.password_field :password %>
+      </div>
 
 
-<p>
-  <%=f.label :password %>
-  <%=f.password_field :password %>
-</p>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">vpn_key</i>
+        <!-- <input id="icon_prefix" type="email" class="validate"> -->
+        <label for="icon_prefix"></label>
+        <%=f.label :password_confirmation %>
+        <%=f.password_field :password_confirmation %>
+      </div>
+    </div>
 
-<p>
-  <%=f.label :password_confirmation %>
-  <%=f.password_field :password_confirmation %>
-</p>
-<p>
 
-  <%=f.submit %>
-</p>
+    <div class="submit_button">
+      <button class="btn waves-effect waves-light" type="submit" name="action">
+        <i class="material-icons right">send</i>
+        <%=f.submit %>
+      </button>
+    </div>
+  </form>
+</div>
+</div>
+
+
+<!-- </p> -->
 
 <% end %>
+<!--
+<p>
+
+</p> -->
+
+
+
+
+
+<!-- <p>
+<%#=f.label :email %>
+<%#=f.text_field :email %>
+</p> -->
+
+<!-- <p>
+
+</p> -->
+
+<!--
+<p>
+
+</p>
+<p> -->

@@ -2,11 +2,11 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 body {
-  background: #FF8C00;
-  background: -webkit-linear-gradient(right, #03256C, #2541B2);
-  background: -moz-linear-gradient(right, #03256C, #2541B2);
-  background: -o-linear-gradient(right, #03256C, #2541B2);
-  background: linear-gradient(to left, #03256C, #2541B2);
+  background: #FF66CC;
+  background: -webkit-linear-gradient(right, #36D96C, #36D96C);
+  background: -moz-linear-gradient(right, #36D96C, #36D96C);
+  background: -o-linear-gradient(right, #36D96C, #36D96C);
+  background: linear-gradient(to left, #36D96C, #36D96C);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -103,6 +103,6 @@ body {
 }
 
 #shop_owner_original_text {
-background-color: #FFF;
-  display: inline-block;
+  background-color: #FFF;
+    display: inline-block;
 }

@@ -2,6 +2,7 @@ class Promotion < ApplicationRecord
   belongs_to :shop_owner
   has_many :customer_promotions
   has_many :customers, through: :customer_promotions
+  before_save :translate, if: :body_changed?
 
 # This code explain how to send a scheduled text promotion
 
@@ -20,22 +21,19 @@ class Promotion < ApplicationRecord
   end
 # checking for if single one is overdue
   def overdue?
-    self.send_time < Time.zone.now
+    self.send_time && self.send_time < Time.zone.now
   end
 
-def send_to_customers
-  self.customers.each do |customer|
-    send_to(customer)
+  # send only to customers assigned to this promotion
+  def send_to_customers
+    self.customers.each do |customer|
+      send_to(customer)
+    end
+    self.update(sent_time: Time.zone.now)
   end
-  self.update(sent_time: Time.zone.now)
-end
 
+  # send to all of the owner's customers
   def send_all
-    # should be
-    # self.customers.each when we add the code to send to indidvudual customers in this case
-    #  if we send to all then would have to select all customers on list or make logic that allows ..all
-    # customer
-# changed this from self.shop_owner.customers.each HOW COME?
     self.shop_owner.customers.each do |customer|
       send_to(customer)
     end
@@ -43,32 +41,36 @@ end
   end
 
   def send_to(customer)
+    body = ''
+    if customer.language == "Spanish"
+      body = self.translated_text
+    else
+      body = self.body
+    end
     client.messages.create(
     from: ENV["TWILIO_SOURCE_NUMBER"],
     to: "+#{customer.ph_number}",
-    body: "#{self.body}"
+    body: "#{body}"
     )
+    cp = CustomerPromotion.find_by(customer: customer, promotion: self)
+    if cp
+      cp.sent_time = Time.zone.now
+      cp.save
+    end
   end
 
   def client
     @client ||= Twilio::REST::Client.new
   end
 
-  def translate(body)
-    # @promotion = Promotion.new
-    # if params[:promotion]
-    # end
-    url = "https://translation.googleapis.com/language/translate/v2?key=#{ENV['API_KEY']}&target=es&q=#{body}"
-    res = HTTParty.post url
-    @result = res.parsed_response['data']['translations'][0]['translatedText']
-    self.translated_text = @result
-    # if params[:promotion]
-      # promotion = Promotion.create(shop_owner_id: ShopOwner.first.id, body: original_text)
-    # end
-    # byebug
+  def translate
+    url = "https://translation.googleapis.com/language/translate/v2?key=#{ENV['API_KEY']}&target=es&q=#{URI.escape(self.body)}"
+    response = HTTParty.post(url).parsed_response
+    # require 'pp'
+    # pp response
+    translation = response['data']['translations'][0]['translatedText']
+    self.translated_text = translation
   end
-  # POST /shop_owners
-  # POST /shop_owners.json
 
   # def translated_text
   #   original_text = !nil
@@ -77,15 +79,6 @@ end
   #   render json: @translated_text
   #   #   redirect_to root_path, notice: 'Created shop owner'
   # end
-
-  def spanish
-    spanish = []
-    @customers.each do |customer|
-      if customer.language == 'spanish'
-        spanish << customer
-      end
-    end
-  end
 
 end
 

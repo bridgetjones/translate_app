@@ -1,4 +1,3 @@
-
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -18,3 +17,77 @@
 select {
   display: block !important;
 }
+
+h1 {
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  text-align: center;
+  font-size: 350%;
+}
+
+
+.row {
+  color: white;
+}
+
+.icon_prefix.validate {
+  color: white;
+}
+
+a:visited {
+  color: lightgreen;
+}
+
+.waves-effect, waves-light btn-large {
+  background-color: rgb(184, 134, 11);
+}
+.btn, waves-effect waves-light {
+  background-color: #B8860B;
+}
+
+.submit_button {
+  text-align: center;
+}
+
+.btn, .btn-large, .btn-flat {
+  border: none;
+  border-radius: 2px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 2rem 5rem 5rem 5rem;
+  text-transform: uppercase;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-button {
+  margin-top: 10px;
+}
+
+#customers {
+  padding-right: 3rem;
+}
+
+.buttons {
+  padding-top: 20rem;
+
+}
+
+.register_form {
+  text-align: center;
+}
+
+.container_buttons {
+  text-align: center;
+}
+
+.promotion_button {
+  padding-bottom: 20px;
+}
+
+/*
+@media (min-width:500px){.container {}}
+/*@media (max-width:499px){/*Class name*/{/*properties*/}}*/*/
+/*https://www.w3schools.com/css/css_rwd_mediaqueries.asp*/
+>>>>>>> Stashed changes

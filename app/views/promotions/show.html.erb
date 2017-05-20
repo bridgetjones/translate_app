@@ -11,8 +11,13 @@
 </p>
 
 <p>
-  <strong>Body:</strong>
+  <strong>English Body:</strong>
   <%= @promotion.body %>
+</p>
+
+<p>
+  <strong>Spanish Body:</strong>
+  <%= @promotion.translated_text %>
 </p>
 
 <p>
@@ -23,26 +28,25 @@
     <% if @promotion.overdue? %>
       Will be sent shortly!
     <% else %>
-      Will be sent in <%= time_ago_in_words @promotion.send_time %>.
+      <% if @promotion.send_time %>
+        Will be sent in <%= time_ago_in_words @promotion.send_time %>.
+      <% else %>
+        Will be sent when you click "send".
+      <% end %>
     <% end %>
   <% end %>
 </p>
 
-<h2>Customers</h2>
+<h3>Customers</h3>
 <ul>
   <% @promotion.customers.each do |customer| %>
-    <li><%= customer.name %>
+    <li><%= link_to customer.name, [current_shop_owner, customer] %>
   <% end %>
 </ul>
 
-  <strong>Translated Text:</stong>
-    <%= @promotion.translated_text %>
-<%= @result %>
-  </p>
-
-<%= render 'customerlist', customers: current_shop_owner.customers %>
-
 <%= link_to 'Edit', edit_shop_owner_promotion_path(current_shop_owner,@promotion) %> |
-<%= link_to 'Back', shop_owner_promotions_path(current_shop_owner) %>
+<%= link_to 'Back', shop_owner_promotions_path(current_shop_owner) %> |
+<%= link_to 'Send to Customers', promotion_send_to_customers_path(@promotion), method: :post %> |
+<%= link_to 'Send to All', promotion_send_all_path(@promotion), method: :post %>
 <!-- Create a Send Button for Promotion Texts  -->
 <!-- Create a Drop Down Menu -->

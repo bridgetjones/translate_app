@@ -51,6 +51,17 @@
       <strong>Shop owner:</strong>
       <%= @customer.shop_owner.name %>
     </p>
+
+    <% if @customer.sent_customer_promotions.count > 0 %>
+      <h3>Messages Sent</h3>
+      <ul>
+        <% @customer.sent_customer_promotions.each do |cp| %>
+          <li>Body: <%= @customer.language == "Spanish" ? cp.promotion.translated_text : cp.promotion.body %>,
+              Sent: <%= time_ago_in_words cp.sent_time %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
     <%= link_to 'Edit', edit_shop_owner_customer_path(current_shop_owner, @customer) %> |
     <%= link_to 'Back', shop_owner_customers_path(current_shop_owner) %>
 </div>

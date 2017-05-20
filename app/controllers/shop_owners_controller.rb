@@ -16,6 +16,7 @@ class ShopOwnersController < ApplicationController
 
   # GET /shop_owners/new
   def new
+    redirect_to dashboard_path if current_shop_owner
     @shop_owner = ShopOwner.new
   end
 
@@ -29,7 +30,7 @@ class ShopOwnersController < ApplicationController
     respond_to do |format|
       if @shop_owner.save
         session[:shop_owner_id] = @shop_owner.id
-        format.html { redirect_to shop_owner_customers_path(shop_owner_id: current_shop_owner), notice: 'Shop owner was successfully created.' }
+        format.html { redirect_to dashboard_path, notice: 'Shop owner was successfully created.' }
         format.json { render :show, status: :created, location: @shop_owner }
       else
         format.html { render :new }

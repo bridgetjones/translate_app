@@ -1,3 +1,13 @@
-    <%=  link_to "Promotions",shop_owner_promotions_path(current_shop_owner.id), class: "waves-effect waves-light btn-large"%>
+<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
 
-    <%=  link_to "Customers",shop_owner_customers_path(current_shop_owner.id), class: "waves-effect waves-light btn-large"%>
+<div class="container_buttons">
+  <div class="promotion_button">
+    <%= link_to "Promotion",shop_owner_promotions_path(current_shop_owner.id), :class => "waves-effect waves-light btn-large"%>
+  </div>
+  <div class="customers_button">
+    <%= link_to "Customers",shop_owner_customers_path(current_shop_owner.id), :class => "waves-effect waves-light btn-large"%>
+  </div>
+  <div class="customers_button">
+    <%= link_to "Logout", logout_path, class: "waves-effect waves-light btn-large" %>
+  </div>
+</div>
