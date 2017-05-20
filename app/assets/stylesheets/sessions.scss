@@ -106,3 +106,13 @@ body {
   background-color: #FFF;
     display: inline-block;
 }
+
+a.signup-link,
+a:hover.signup-link,
+a:visited.signup-link
+ {
+  color: blue !important;
+}
+#button_clicked{
+  color: black
+}

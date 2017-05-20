@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 20170520003207) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.datetime "send_time"
-    t.text     "translated_text"
     t.datetime "sent_time"
+    t.text     "translated_text"
     t.index ["shop_owner_id"], name: "index_promotions_on_shop_owner_id"
   end
 

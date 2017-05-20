@@ -1,5 +1,5 @@
 class PromotionsController < ApplicationController
-  before_action :set_promotion, only: [:show, :edit, :update, :destroy, :send_all, :send_to_customers]
+  before_action :set_promotion, only: [:show, :edit, :update, :destroy, :send_all_messages]
   before_action :require_logged_in
 
 
@@ -32,7 +32,7 @@ class PromotionsController < ApplicationController
 
     # @promotion.translate(@promotion.body)
 
-    # make notes that belong to the current shop owner
+# make notes that belong to the current shop owner
     respond_to do |format|
       if @promotion.save
         format.html { redirect_to shop_owner_promotion_path(current_shop_owner,@promotion), notice: 'Promotion was successfully created.' }
@@ -69,11 +69,8 @@ class PromotionsController < ApplicationController
     end
   end
 
-  def send_all
+  def send_all_messages
     @promotion.send_all
-  end
-  def send_to_customers
-    @promotion.send_to_customers
   end
 
   private
@@ -82,8 +79,7 @@ class PromotionsController < ApplicationController
     def set_promotion
       @promotion = current_shop_owner.promotions.find(params[:id])
     end
-
-    # only find notes of current shop owner logged in
+# only find notes of current shop owner logged in
     # Never trust parameters from the scary internet, only allow the white list through.
     def promotion_params
       params.require(:promotion).permit(:english_promo, :body, :send_time)
@@ -93,6 +89,8 @@ class PromotionsController < ApplicationController
       params[:customer].require(:id).select &:present?
     end
 end
+
+# this is so we dont capture the first empty spot of collection table
 # dont permit shop owner id as parameter
 
 # params.require(:promotion).permit(:shop_owner_id, :english_promo, :body) original

@@ -1,5 +1,7 @@
-<h1>New Customer</h1>
+<div class="container">
+  <h1>New Customer</h1>
 
 <%= render 'form', customer: @customer, shop_owner: current_shop_owner %>
 
 <%= link_to 'Back', shop_owner_customers_path(current_shop_owner) %>
+</div>

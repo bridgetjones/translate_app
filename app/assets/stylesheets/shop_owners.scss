@@ -11,3 +11,15 @@ form#new_shop_owner.new_shop_owner {
 i.large.material-icons {
   font-size: 25rem;
 }
+.waves-effect input[type="button"], .waves-effect input[type="reset"], .waves-effect input[type="submit"] {
+    border: 0;
+    font-style: normal;
+    font-size: inherit;
+    text-transform: inherit;
+    background: none;
+}
+
+.new_customer i.material-icons  {
+  color: white 
+
+}
