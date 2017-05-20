@@ -18,3 +18,7 @@ form#new_shop_owner.new_shop_owner {
 i.large.material-icons {
   font-size: 25rem;
 }
+
+.actions update_customer {
+  color: white;
+}
