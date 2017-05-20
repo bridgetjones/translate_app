@@ -23,12 +23,12 @@
   <!-- <aside class="AsideWrapper">
 
   </aside> -->
-  <main class="MainWrapper">
+  <main class="MainWrapper container">
 <p id="notice"><%= notice %></p>
 
 <h1>Customers</h1>
 
-<table class="responsive-table centered highlight">
+<table class="responsive-table centered highlight customer-table">
   <thead>
     <tr>
       <th>Name</th>
@@ -46,7 +46,7 @@
     <p>There are no customers.</p>
     <% else %>
     <% @customers.each do |customer| %>
-    <tr>
+    <tr class="customer-list">
       <td><%= customer.name %></td>
       <td><%= customer.language %></td>
       <td><%= customer.ph_number %></td>
