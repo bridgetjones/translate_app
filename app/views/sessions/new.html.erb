@@ -5,7 +5,19 @@
     <%=text_field_tag :email, nil, placeholder:'email' %>
     <%=password_field_tag :password, nil, placeholder: 'password' %> </p>
     <%=button_tag 'login' %>
-    <p class="message" id="button_clicked">Not registered? <%= link_to 'Create an Account', new_shop_owner_path %></p>
+    <p class="message" id="button_clicked">Not registered? <%= link_to 'Create an Account', new_shop_owner_path, class: "signup-link" %></p>
     <% end %>
   </div>
 </div>
+
+<style>
+  a.signup-link,
+  a:hover.signup-link,
+  a:visited.signup-link
+   {
+    color: blue !important;
+  }
+  #button_clicked{
+    color: black
+  }
+</style>
