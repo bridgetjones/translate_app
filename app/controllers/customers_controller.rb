@@ -30,7 +30,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to shop_owner_customer_path(current_shop_owner,@customer), notice: 'Customer was successfully created.' }
+        format.html { redirect_to shop_owner_customers_path(current_shop_owner), notice: 'Customer was successfully created.' }
         format.json { render :show, status: :created, location: @customer }
       else
         format.html { render :new }

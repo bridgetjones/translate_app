@@ -33,7 +33,3 @@ html, body {
 .green {
     background-color: #43a047 !important;
 }
-
-a:visited {
-    color: white !important;
-}

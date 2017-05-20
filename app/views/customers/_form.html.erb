@@ -1,41 +1,45 @@
-<%= form_for([shop_owner, customer], class:"customer_new") do |f| %>
-  <% if customer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
 
-      <ul>
-      <% customer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for([shop_owner, customer]) do |f| %>
+<% if customer.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
 
-  <div class="input-field">
-    <i class="material-icons prefix"> perm_identity</i>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+  <ul>
+    <% customer.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="input-field">
-    <i class="material-icons prefix"> language</i>
-    <%= f.label :language %>
-    <%= f.text_field :language %>
-  </div>
+<div class="container">
+<div class="input-field">
+  <i class="material-icons prefix">account_circle</i>
+  <%= f.text_field :name, class: 'validate' %>
+  <%= f.label :name %>
+</div>
 
-  <div class="input-field">
-    <i class="material-icons prefix"> call</i>
-    <%= f.label :ph_number %>
-    <%= f.text_field :ph_number %>
-  </div>
+<div class="input-field">
+  <i class="material-icons prefix">language</i>
+  <%= f.text_field :language, class: 'validate' %>
+  <%= f.label :language %>
+</div>
 
-  <div class="input-field">
-    <i class="material-icons prefix"> email</i>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
+<div class="input-field">
+  <i class="material-icons prefix">phone</i>
+  <%= f.text_field :ph_number %>
+  <%= f.label :ph_number %>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Create Customer" , class:"btn"  %>
-  </div>
+<div class="input-field">
+  <i class="material-icons prefix">email</i>
+  <%= f.text_field :email %>
+  <%= f.label :email %>
+</div>
+
+<div class="actions">
+  <%= f.submit class: 'btn'%>
+</div>
+</div>
+
 <% end %>

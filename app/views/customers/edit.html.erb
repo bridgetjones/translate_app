@@ -1,6 +1,5 @@
 <h1>Editing Customer</h1>
-
+<div class="container customer_form">
 <%= render 'form', shop_owner: current_shop_owner, customer: @customer %>
-
-<%= link_to 'Show', shop_owner_customer_path(current_shop_owner,@customer) %>
 <%= link_to 'Back', shop_owner_customers_path(current_shop_owner) %>
+</div>
