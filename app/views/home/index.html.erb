@@ -2,12 +2,12 @@
 
 <div class="container_buttons">
   <div class="promotion_button">
-    <%= link_to "Promotion",shop_owner_promotions_path(current_shop_owner.id), :class => "waves-effect waves-light btn-large"%>
+    <%= link_to "Promotion",shop_owner_promotions_path(current_shop_owner.id), :class => "waves-effect waves-light btn-large green"%>
   </div>
   <div class="customers_button">
-    <%= link_to "Customers",shop_owner_customers_path(current_shop_owner.id), :class => "waves-effect waves-light btn-large"%>
-  </div>
-  <div class="customers_button">
-    <%= link_to "Logout", logout_path, class: "waves-effect waves-light btn-large" %>
+    <%= link_to "Customers",shop_owner_customers_path(current_shop_owner.id), :class => "waves-effect waves-light btn-large green"%>
   </div>
 </div>
+
+
+  <%= link_to "Logout", logout_path, class: "waves-effect waves-light logout_button btn-tiny" %>

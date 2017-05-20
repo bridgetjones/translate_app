@@ -2,11 +2,11 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 body {
-  background: #FF66CC;
-  background: -webkit-linear-gradient(right, #36D96C, #36D96C);
-  background: -moz-linear-gradient(right, #36D96C, #36D96C);
-  background: -o-linear-gradient(right, #36D96C, #36D96C);
-  background: linear-gradient(to left, #36D96C, #36D96C);
+  background: #1f5768;
+  background: -webkit-linear-gradient(right, #1f5768, #1f5768);
+  background: -moz-linear-gradient(right, #1f5768, #1f5768);
+  background: -o-linear-gradient(right, #1f5768, #1f5768);
+  background: linear-gradient(to left, #1f5768, #1f5768);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -54,7 +54,7 @@ body {
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: #FF4500;
+  background: #43a047;
 }
 .form .message {
   margin: 15px 0 0;

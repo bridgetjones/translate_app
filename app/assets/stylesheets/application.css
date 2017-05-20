@@ -20,11 +20,10 @@ select {
 
 h1 {
   font-family: "Times New Roman", Times, serif;
-  color: white;
+  color: #1f5768;
   text-align: center;
   font-size: 350%;
 }
-
 
 .row {
   color: white;
@@ -38,13 +37,17 @@ a:visited {
   color: lightgreen;
 }
 
-.waves-effect, waves-light btn-large {
+.waves-effectwaves-light btn-large1 {
   background-color: rgb(184, 134, 11);
-}
-.btn, waves-effect waves-light {
+  display: flex;
+  }
+
+.btn, .waves-effect.waves-light1 {
   background-color: #B8860B;
 }
-
+.bg-red {
+  background: red;
+}
 .submit_button {
   text-align: center;
 }
@@ -53,12 +56,6 @@ a:visited {
   border: none;
   border-radius: 2px;
   display: inline-block;
-  height: 36px;
-  line-height: 36px;
-  padding: 2rem 5rem 5rem 5rem;
-  text-transform: uppercase;
-  vertical-align: middle;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .menu-button {
@@ -77,17 +74,3 @@ a:visited {
 .register_form {
   text-align: center;
 }
-
-.container_buttons {
-  text-align: center;
-}
-
-.promotion_button {
-  padding-bottom: 20px;
-}
-
-/*
-@media (min-width:500px){.container {}}
-/*@media (max-width:499px){/*Class name*/{/*properties*/}}*/*/
-/*https://www.w3schools.com/css/css_rwd_mediaqueries.asp*/
->>>>>>> Stashed changes
