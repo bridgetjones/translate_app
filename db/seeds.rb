@@ -14,7 +14,7 @@ ApplicationRecord.transaction do
   2.times do |x|
 
     shopowner = ShopOwner.create(name: Faker::Name.name, shop_name: Faker::Company.name, address:Faker::Address.street_address,
-    password: Faker::Lorem.characters(8),email: Faker::Internet.email)
+    password: ENV["MY_SHOP_OWNER_PASSWORD"],email: Faker::Internet.email)
 
     3.times do |x|
       promotion = Promotion.create(
