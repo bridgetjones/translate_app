@@ -13,21 +13,84 @@
   </thead>
 
   <tbody>
-    <% @promotions.each do |promotion| %>
-      <tr>
-        <td><%= promotion.shop_owner.name %></td>
-        <td><%= promotion.english_promo %></td>
-        <td><%= promotion.body %></td>
-        <td><%= link_to 'Show', shop_owner_promotion_path(current_shop_owner,promotion) %></td>
-        <td><%= link_to 'Edit', edit_shop_owner_promotion_path(current_shop_owner,promotion) %></td>
-        <td><%= link_to 'Send to Customers', promotion_send_to_customers_path(promotion), method: :post %></td>
-        <td><%= link_to 'Send to All', promotion_send_all_path(promotion), method: :post %></td>
-        <td><%= link_to 'Destroy', shop_owner_promotion_path(current_shop_owner,promotion), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <% @promotions.each_with_index do |promotion, ix| %>
+    <tr>
+      <td><%= promotion.shop_owner.name %></td>
+      <td><%= promotion.english_promo %></td>
+      <td><%= promotion.body %></td>
+      <td><%= link_to 'Show', "#modal_#{ix}" %></td>
+      <td><%= link_to 'Edit', edit_shop_owner_promotion_path(current_shop_owner,promotion) %></td>
+      <td><%= link_to 'Send to Customer', promotion_send_to_customers_path(promotion), method: :post %></td>
+      <td><%= link_to 'Send to All', promotion_send_all_path(promotion), method: :post %></td>
+      <td><%= link_to 'Destroy', shop_owner_promotion_path(current_shop_owner,promotion), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <!-- Modal Structure -->
+    <div id="<%= "modal_#{ix}" %>" class="modal">
+      <div class="modal-content">
+        <main class="MainWrapper">
 
-<br>
-<%= link_to 'New promotion', new_shop_owner_promotion_path(current_shop_owner), class: "waves-effect waves-light btn-large" %> |
-<%= link_to "Dashboard", dashboard_path %>
+          <p id="notice"><%= notice %></p>
+
+          <p>
+            <strong>Shop owner:</strong>
+            <%= promotion.shop_owner.name.capitalize %>
+          </p>
+
+          <p>
+            <strong>English promo:</strong>
+            <%= promotion.english_promo %>
+          </p>
+
+          <p>
+            <strong>English Body:</strong>
+            <%= promotion.body %>
+          </p>
+
+          <p>
+            <strong>Spanish Body:</strong>
+            <%= promotion.translated_text %>
+          </p>
+
+          <p>
+            <strong>SendTime:</strong>
+            <% if promotion.sent? %>
+            Sent <%= time_ago_in_words promotion.sent_time %> ago.
+            <% else %>
+            <% if promotion.overdue? %>
+            Will be sent shortly!
+            <% else %>
+            <% if promotion.send_time %>
+            Will be sent in <%= time_ago_in_words promotion.send_time %>.
+            <% else %>
+            Will be sent when you click "send".
+            <% end %>
+            <% end %>
+            <% end %>
+          </p>
+
+          <h3>Customers</h3>
+          <ul>
+            <% promotion.customers.each do |customer| %>
+            <li><%= link_to customer.name, [current_shop_owner, customer] %>
+              <% end %>
+            </ul>
+
+            <%= link_to 'Edit', edit_shop_owner_promotion_path(current_shop_owner,promotion) %> |
+            <%= link_to 'Back', shop_owner_promotions_path(current_shop_owner) %> |
+            <!-- <#%= link_to 'Send to Customer', promotion_send_to_customers_path(promotion), method: :post %> | -->
+
+          </main>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+      </div>
+      <!-- <%= link_to 'Send to All', promotion_send_all_path(promotion), method: :post %> -->
+      <!-- <%= link_to 'New promotion', new_shop_owner_promotion_path(current_shop_owner), class: "waves-effect waves-light btn-large" %> |
+      <%= link_to "Dashboard", dashboard_path %> -->
+
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>

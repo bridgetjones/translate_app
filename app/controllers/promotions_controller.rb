@@ -76,7 +76,6 @@ class PromotionsController < ApplicationController
     @promotion.send_to_customers
   end
 
-
   private
 
     # Use callbacks to share common setup or constraints between actions.
