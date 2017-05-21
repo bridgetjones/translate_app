@@ -8,15 +8,17 @@ html, body {
   justify-content: center;
   /*align-items: center;*/
   padding-top: 350px;
+  color: white !important
 }
 
-.promotion_button{
+.promotion_button {
   margin-right: 5px;
   color: white !important
 }
 
-.customers_button{
-  margin-left: 5px
+.customers_button {
+  margin-left: 5px;
+  color: white !important
 }
 .LogoArea {
     width: 200px;
@@ -29,6 +31,7 @@ html, body {
   position: fixed !important;
   top: 15px;
   right: 30px;
+  color:white !important
 }
 
 .green {

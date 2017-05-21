@@ -5,27 +5,38 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-p "seeding customers"
+# p "seeding customers"
 
-CUSTOMERS = [
-{name: "John Smith", language: "spanish", ph_number: "16461317", email: "john.smith@gmail.com", shop_owner_id: 1},
-{name: "John Smith", language: "spanish", ph_number: "16461317", email: "john.smith@gmail.com", shop_owner_id: 1},
-{name: "John Smith", language: "spanish", ph_number: "16461317", email: "john.smith@gmail.com", shop_owner_id: 1},
-{name: "John Smith", language: "spanish", ph_number: "16461317", email: "john.smith@gmail.com", shop_owner_id: 1},
-{name: "John Smith", language: "spanish", ph_number: "16461317", email: "john.smith@gmail.com", shop_owner_id: 1},
-{name: "John Smith", language: "spanish", ph_number: "16461317", email: "john.smith@gmail.com", shop_owner_id: 1},
-{name: "John Smith", language: "spanish", ph_number: "16461317", email: "john.smith@gmail.com", shop_owner_id: 1},
-{name: "John Smith", language: "spanish", ph_number: "16461317", email: "john.smith@gmail.com", shop_owner_id: 1},
-{name: "John Smith", language: "spanish", ph_number: "16461317", email: "john.smith@gmail.com", shop_owner_id: 1},
-{name: "John Smith", language: "spanish", ph_number: "16461317", email: "john.smith@gmail.com", shop_owner_id: 1},
-{name: "John Smith", language: "spanish", ph_number: "16461317", email: "john.smith@gmail.com", shop_owner_id: 1},
-{name: "John Smith", language: "spanish", ph_number: "16461317", email: "john.smith@gmail.com", shop_owner_id: 1},
-{name: "John Smith", language: "spanish", ph_number: "16461317", email: "john.smith@gmail.com", shop_owner_id: 1},
-{name: "John Smith", language: "spanish", ph_number: "16461317", email: "john.smith@gmail.com", shop_owner_id: 1},
-{name: "John Smith", language: "spanish", ph_number: "16461317", email: "john.smith@gmail.com", shop_owner_id: 1},
-{name: "John Smith", language: "spanish", ph_number: "16461317", email: "john.smith@gmail.com", shop_owner_id: 1},
-]
+puts "seeding the shopowners"
+ApplicationRecord.transaction do
 
-CUSTOMERS.each do |customer|
-  Customer.find_or_create_by!(name: customer[:name], language: customer[:language]) keep doing 
+
+  2.times do |x|
+
+    shopowner = ShopOwner.create(name: Faker::Name.name, shop_name: Faker::Company.name, address:Faker::Address.street_address,
+    password: Faker::Lorem.characters(8),email: Faker::Internet.email)
+
+    3.times do |x|
+      promotion = Promotion.create(
+        body: Faker::Lorem.sentence, english_promo: Faker::Lorem.word, shop_owner: shopowner)
+      5.times do |x|
+        phone_number = if x % 3 == 0
+          "13055287402"
+        elsif x % 3 == 1
+          "17862188636"
+        elsif  x % 3 == 2
+          "19173273223"
+        end
+        Customer.create(
+          name: Faker::Name.name,
+          email: Faker::Internet.email,
+          ph_number: phone_number,
+          language: x.odd? ? "english" : "spanish",
+          shop_owner: shopowner,
+          promotions: [promotion])
+      end
+    end
+  end
+  # byebug
+  # raise StandardError
 end

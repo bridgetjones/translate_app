@@ -12,14 +12,17 @@
 
 ActiveRecord::Schema.define(version: 20170520003207) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "customer_promotions", force: :cascade do |t|
     t.integer  "customer_id"
     t.integer  "promotion_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.datetime "sent_time"
-    t.index ["customer_id"], name: "index_customer_promotions_on_customer_id"
-    t.index ["promotion_id"], name: "index_customer_promotions_on_promotion_id"
+    t.index ["customer_id"], name: "index_customer_promotions_on_customer_id", using: :btree
+    t.index ["promotion_id"], name: "index_customer_promotions_on_promotion_id", using: :btree
   end
 
   create_table "customers", force: :cascade do |t|
@@ -30,7 +33,7 @@ ActiveRecord::Schema.define(version: 20170520003207) do
     t.integer  "shop_owner_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["shop_owner_id"], name: "index_customers_on_shop_owner_id"
+    t.index ["shop_owner_id"], name: "index_customers_on_shop_owner_id", using: :btree
   end
 
   create_table "promotions", force: :cascade do |t|
@@ -40,9 +43,9 @@ ActiveRecord::Schema.define(version: 20170520003207) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.datetime "send_time"
-    t.datetime "sent_time"
     t.text     "translated_text"
-    t.index ["shop_owner_id"], name: "index_promotions_on_shop_owner_id"
+    t.datetime "sent_time"
+    t.index ["shop_owner_id"], name: "index_promotions_on_shop_owner_id", using: :btree
   end
 
   create_table "shop_owners", force: :cascade do |t|
@@ -56,4 +59,6 @@ ActiveRecord::Schema.define(version: 20170520003207) do
     t.string   "email"
   end
 
+  add_foreign_key "customers", "shop_owners"
+  add_foreign_key "promotions", "shop_owners"
 end
