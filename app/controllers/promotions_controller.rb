@@ -1,5 +1,5 @@
 class PromotionsController < ApplicationController
-  before_action :set_promotion, only: [:show, :edit, :update, :destroy, :send_all_messages]
+  before_action :set_promotion, only: [:show, :edit, :update, :destroy, :send_all, :send_to_customers]
   before_action :require_logged_in
 
 
@@ -69,9 +69,13 @@ class PromotionsController < ApplicationController
     end
   end
 
-  def send_all_messages
+  def send_all
     @promotion.send_all
   end
+  def send_to_customers
+    @promotion.send_to_customers
+  end
+
 
   private
 
