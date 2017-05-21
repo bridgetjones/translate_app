@@ -73,6 +73,11 @@ class PromotionsController < ApplicationController
     @promotion.send_all
   end
 
+  def send_to_customers
+    puts "Hello!"
+    send_to 
+  end
+
   private
 
     # Use callbacks to share common setup or constraints between actions.

@@ -25,7 +25,7 @@ class Promotion < ApplicationRecord
   end
 
   # send only to customers assigned to this promotion
-  def send_to_customers
+  def send_to_customers 
     self.customers.each do |customer|
       send_to(customer)
     end
