@@ -25,7 +25,7 @@ class Promotion < ApplicationRecord
   end
 
   # send only to customers assigned to this promotion
-  def send_to_customers 
+  def send_to_customers
     self.customers.each do |customer|
       send_to(customer)
     end
@@ -68,6 +68,7 @@ class Promotion < ApplicationRecord
     response = HTTParty.post(url).parsed_response
     # require 'pp'
     # pp response
+    # p response
     translation = response['data']['translations'][0]['translatedText']
     self.translated_text = translation
   end

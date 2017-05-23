@@ -12,16 +12,16 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="input-field">
     <%= f.hidden_field :shop_owner_id, value: current_shop_owner.id %>
   </div>
 
-  <div class="field">
+  <div class="input-field">
     <%= f.label :english_promo %>
     <%= f.text_field :english_promo %>
   </div>
 
-  <div class="field">
+  <div class="input-field">
     <%= f.label :body %>
     <%= f.text_area :body %>
   </div>
@@ -31,7 +31,7 @@
      <%= f.datetime_field :send_time %>
    </div>
 
-   <div class="field">
+   <div class="select-field">
      <%= label_tag "Select Customers" %>
      <%= collection_select :customer, :id,
        current_shop_owner.customers, :id, :name,
@@ -40,6 +40,6 @@
    </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", class:"btn"%>
   </div>
 <% end %>
