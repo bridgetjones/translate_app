@@ -353,25 +353,27 @@ strong{
   font-weight: 400;
 }
 
-.customer-table {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    font-color: white;
-}
-table.customer-table thead, .customer-table tbody {
-  color: white;
-}
-table.customer-table>tbody>tr.customer-list:hover{
-  background-color: green;
-}
-table {
-    border-collapse: separate;
-    border-spacing: 0;
-    border-width: 1px 0 0 1px;
-    margin-bottom: 24px;
-    width: 92%;
-    text-align: center;
-    background-color: inherit;
-}
+// .customer
+
+// .customer-table {
+//     border: 1px solid rgba(0, 0, 0, 0.1);
+//     font-color: white;
+// }
+// table.customer-table thead, .customer-table tbody {
+//   color: white;
+// }
+// table.customer-table>tbody>tr.customer-list:hover{
+//   background-color: green;
+// }
+// table {
+//     border-collapse: separate;
+//     border-spacing: 0;
+//     border-width: 1px 0 0 1px;
+//     margin-bottom: 24px;
+//     width: 92%;
+//     text-align: center;
+//     background-color: inherit;
+// }
 .CustomerShow {
   color: #1f5768;
 }

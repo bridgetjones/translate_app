@@ -25,7 +25,7 @@ class Promotion < ApplicationRecord
   end
 
   # send only to customers assigned to this promotion
-  def send_to_customers 
+  def send_to_customers
     self.customers.each do |customer|
       send_to(customer)
     end
@@ -50,7 +50,7 @@ class Promotion < ApplicationRecord
     client.messages.create(
     from: ENV["TWILIO_SOURCE_NUMBER"],
     to: "+#{customer.ph_number}",
-    body: "#{body}"
+    body: "#{customer.name},  #{body}"
     )
     cp = CustomerPromotion.find_by(customer: customer, promotion: self)
     if cp

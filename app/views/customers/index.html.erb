@@ -46,7 +46,7 @@
     <p>There are no customers.</p>
     <% else %>
     <% @customers.each_with_index do |customer,ix| %>
-      <tr class="customer-list">
+      <tr class="striped">
         <td><%= customer.name %></td>
         <td><%= customer.language %></td>
         <td><%= customer.ph_number %></td>
@@ -117,3 +117,5 @@
 
 <%= link_to 'New Customer', new_shop_owner_customer_path(current_shop_owner) %>
 </main>
+
+<!-- "customer-list"> -->
