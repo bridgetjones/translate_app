@@ -1,22 +1,22 @@
 <p id="notice"><%= notice %></p>
-
+<div class="show">
 <p>
   <strong>Shop owner:</strong>
   <%= @promotion.shop_owner.name.capitalize %>
 </p>
 
 <p>
-  <strong>English promo:</strong>
+  <strong>Title:</strong>
   <%= @promotion.english_promo %>
 </p>
 
 <p>
-  <strong>English Body:</strong>
+  <strong>English Promotion:</strong>
   <%= @promotion.body %>
 </p>
 
 <p>
-  <strong>Spanish Body:</strong>
+  <strong>Spanish Promotion:</strong>
   <%= @promotion.translated_text %>
 </p>
 
@@ -37,16 +37,17 @@
   <% end %>
 </p>
 
-<h3>Customers</h3>
+<h4>Customers</h4>
 <ul>
   <% @promotion.customers.each do |customer| %>
     <li><%= link_to customer.name, [current_shop_owner, customer] %>
   <% end %>
 </ul>
 
-<%= link_to 'Edit', edit_shop_owner_promotion_path(current_shop_owner,@promotion) %> |
-<%= link_to 'Back', shop_owner_promotions_path(current_shop_owner) %> |
-<%= link_to 'Send to Customer', promotion_send_to_customers_path(@promotion), method: :post %> |
-<%= link_to 'Send to All', promotion_send_all_path(@promotion), method: :post %>
+<%= link_to "<i class='small material-icons'> mode_edit</i>".html_safe, edit_shop_owner_promotion_path(current_shop_owner,@promotion) %> |
+<%= link_to "<i class='small material-icons'> replay</i>".html_safe, shop_owner_promotions_path(current_shop_owner) %> |
+<%= link_to "<i class='small material-icons'> chat_bubble_outline</i>".html_safe, promotion_send_to_customers_path(@promotion), method: :post %> |
+<%= link_to "<i class='small material-icons'> textsms</i>".html_safe, promotion_send_all_path(@promotion), method: :post %>
+</div>
 <!-- Create a Send Button for Promotion Texts  -->
 <!-- Create a Drop Down Menu -->

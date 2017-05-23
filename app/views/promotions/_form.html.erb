@@ -1,4 +1,4 @@
-<div class="container">
+
 <%= form_for([current_shop_owner, promotion]) do |f| %>
   <% if promotion.errors.any? %>
     <div id="error_explanation">
@@ -17,12 +17,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :english_promo %>
+    <%= f.label :english_promo, 'Title' %>
     <%= f.text_field :english_promo %>
   </div>
 
   <div class="field">
-    <%= f.label :body %>
+    <%= f.label :body, 'Promotion' %>
     <%= f.text_area :body %>
   </div>
 
@@ -31,7 +31,7 @@
      <%= f.datetime_field :send_time %>
    </div>
 
-   <div class="field">
+   <div class="field customer_color">
      <%= label_tag "Select Customers" %>
      <%= collection_select :customer, :id,
        current_shop_owner.customers, :id, :name,
@@ -40,7 +40,10 @@
    </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Promotion", class: "btn"%>
   </div>
 <% end %>
-</div>
+
+
+
+<!-- <%= link_to "Customers <i class='material-icons right'> supervisor_account</i>".html_safe,shop_owner_customers_path(current_shop_owner.id), :class => "waves-effect waves-light btn-large green"%> -->

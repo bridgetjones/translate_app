@@ -2,21 +2,7 @@
   <div class="LogoArea">MOBY</div>
   <div class="RightSideWrapper">
     <div class="PageNameArea"><%= link_to "Dashboard", dashboard_path %></div>
-    <div class="ToolbarArea">
-      <div class="Settings">
-        <label class="FancyInputTrigger"><i class="material-icons">settings</i></label>
-      </div>
-      <div class="Notifications">
-        <i class="material-icons">notifications_none</i>
-      </div>
-      <div class="ProfileActions">
-        <label for="ProfileActionsCheckbox" class="FancyInputTrigger"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/48.jpg" alt="Adham Dannaway"></label>
-        <input id="ProfileActionsCheckbox" type="checkbox" class="FancyTriger">
-        <ul class="ContextMenu">
-          <li><a href="#"><i class="material-icons">power_settings_new</i> Abmelden</a></li>
-        </ul>
-      </div>
-    </div>
+    <%= link_to "Promotions <i class='mediuem material-icons right'> loyalty</i>".html_safe, shop_owner_promotions_path(current_shop_owner) %>
   </div>
 </header>
 <div class="LowerWrapper">
@@ -27,6 +13,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Customers</h1>
+<%= link_to "<i class=' medium material-icons right'> add loyalty</i>".html_safe,new_shop_owner_customer_path(current_shop_owner), :class => "btn-floating btn-large waves-effect waves-light blue shape"%>
+<table class="bordered">
 
 <table class="responsive-table centered highlight customer-table">
   <thead>
@@ -53,9 +41,9 @@
         <td><%= customer.email %></td>
         <td><%= customer.shop_owner.name %></td>
 
-        <td><%= link_to 'Show', "#modal_#{ix}" %></td>
-        <td><%= link_to 'Edit', edit_shop_owner_customer_path(current_shop_owner,customer) %></td>
-        <td><%= link_to 'Destroy', shop_owner_customer_path(current_shop_owner,customer), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "<i class='small material-icons'> supervisor_account</i>".html_safe, "#modal_#{ix}" %></td>
+        <td><%= link_to "<i class='small material-icons'> mode_edit</i>".html_safe, edit_shop_owner_customer_path(current_shop_owner,customer)%></td>
+        <td><%= link_to "<i class='small material-icons'> delete</i>".html_safe, shop_owner_customer_path(current_shop_owner,customer), method: :delete, data: { confirm: 'Are you sure?' }%></td>
 
       </tr>
       <!-- Modal Structure -->
@@ -116,6 +104,7 @@
 <br>
 
 <%= link_to 'New Customer', new_shop_owner_customer_path(current_shop_owner) %>
+<%= link_to 'Promotions', shop_owner_promotions_path(current_shop_owner) %>
 </main>
 
 <!-- "customer-list"> -->

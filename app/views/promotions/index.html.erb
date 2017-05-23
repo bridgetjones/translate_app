@@ -3,13 +3,13 @@
   <p id="notice"><%= notice %></p>
 
 <h1>Promotions</h1>
-
+  <%= link_to "<i class=' medium material-icons right'> add loyalty</i>".html_safe,new_shop_owner_promotion_path(current_shop_owner), :class => "btn-floating btn-large waves-effect waves-light blue shape"%>
 <table class="bordered">
   <thead>
     <tr>
-      <th>Shop owner</th>
-      <th>English promo</th>
-      <th>Body</th>
+      <th class="table_title">Shop owner</th>
+      <th class="table_title">Title</th>
+      <th class="table_title">Promotion</th>
       <th colspan="5"></th>
     </tr>
   </thead>
@@ -20,11 +20,11 @@
       <td><%= promotion.shop_owner.name %></td>
       <td><%= promotion.english_promo %></td>
       <td><%= promotion.body %></td>
-      <td><%= link_to 'Show', "#modal_#{ix}" %></td>
-      <td><%= link_to 'Edit', edit_shop_owner_promotion_path(current_shop_owner,promotion) %></td>
-      <td><%= link_to 'Send to Customer', promotion_send_to_customers_path(promotion), method: :post %></td>
-      <td><%= link_to 'Send to All', promotion_send_all_path(promotion), method: :post %></td>
-      <td><%= link_to 'Destroy', shop_owner_promotion_path(current_shop_owner,promotion), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to "<i class='small material-icons'> loyalty</i>".html_safe, "#modal_#{ix}" %></td>
+      <td><%= link_to "<i class='small material-icons'> mode_edit</i>".html_safe, edit_shop_owner_customer_path(current_shop_owner,promotion)%></td>
+      <td><%= link_to "<i class='small material-icons'> chat_bubble_outline</i>".html_safe, promotion_send_to_customers_path(promotion), method: :post %></td>
+      <td><%= link_to "<i class='small material-icons'> textsms</i>".html_safe, promotion_send_all_path(promotion), method: :post %></td>
+      <td><%= link_to "<i class='small material-icons'> delete</i>".html_safe, shop_owner_customer_path(current_shop_owner,promotion), method: :delete, data: { confirm: 'Are you sure?' }%></td>
     </tr>
     <!-- Modal Structure -->
     <div id="<%= "modal_#{ix}" %>" class="modal">
@@ -39,7 +39,7 @@
           </p>
 
           <p>
-            <strong>English promo:</strong>
+            <strong> Title :</strong>
             <%= promotion.english_promo %>
           </p>
 
@@ -77,7 +77,7 @@
               <% end %>
             </ul>
 
-            <%= link_to 'Edit', edit_shop_owner_promotion_path(current_shop_owner,promotion) %> |
+            <%= link_to "<i class='small material-icons'> mode_edit</i>".html_safe, edit_shop_owner_customer_path(current_shop_owner,promotion) %> |
             <%= link_to 'Back', shop_owner_promotions_path(current_shop_owner) %> |
             <!-- <#%= link_to 'Send to Customer', promotion_send_to_customers_path(promotion), method: :post %> | -->
 
