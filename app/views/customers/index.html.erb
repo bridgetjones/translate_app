@@ -1,5 +1,5 @@
 <header class="HeaderWrapper">
-  <div class="LogoArea">MOBY</div>
+  <div class="LogoArea"></div>
   <div class="RightSideWrapper">
     <div class="PageNameArea"><%= link_to "Dashboard", dashboard_path %></div>
     <%= link_to "Promotions <i class='mediuem material-icons right'> loyalty</i>".html_safe, shop_owner_promotions_path(current_shop_owner) %>
@@ -13,7 +13,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Customers</h1>
-<%= link_to "<i class=' medium material-icons right'> add loyalty</i>".html_safe,new_shop_owner_customer_path(current_shop_owner), :class => "btn-floating btn-large waves-effect waves-light blue shape"%>
+<%= link_to "<i class=' medium material-icons right'> add supervisor_account</i>".html_safe,new_shop_owner_customer_path(current_shop_owner), :class => "btn-floating btn-large waves-effect waves-light blue shape"%>
 <table class="bordered">
 
 <table class="responsive-table centered highlight customer-table">
